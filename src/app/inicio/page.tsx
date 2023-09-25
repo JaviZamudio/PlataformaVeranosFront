@@ -7,8 +7,9 @@ export default function Inicio() {
     <>
       <Header />
 
-      <header> /* Encabezado con logo de facultad y botones */
-        <h1>Plataforma Veranos UAQ</h1>
+      <header> 
+        {/* Encabezado con logo de facultad y botones */}
+        <h1 className="text-3xl font-bold underline">Plataforma Veranos UAQ</h1>
         <img src="public\logo.png" alt="" />
         <nav>
           <ul>
@@ -26,7 +27,8 @@ export default function Inicio() {
         </nav>
       </header>
       <main>
-        <section> /* Seccion de filtros */
+        <section> 
+          {/* Seccion de filtros */}
           <label htmlFor="Carrera">Carrera</label>
           <select name="Carrera">
             <option value="inf">Licencitura en Informática</option>
@@ -49,7 +51,8 @@ export default function Inicio() {
             </button>
           </form>
         </section>
-        <section>   /* Tarjetas de cada materia disponible */
+        <section>   
+          {/* Tarjetas de cada materia disponible */}
           <div>
             <header>
               <img src="imgMateria.png" alt="" />

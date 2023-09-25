@@ -3,7 +3,8 @@ import React from 'react';
 export default function InicioAdmin() {
   return (
     <>
-      <header> /* Encabezado con logo de facultad y botones */
+      {/* Encabezado con logo de facultad y botones */}
+      <header> 
         <img src="public\logo.png" alt="" />
         <button typeof='button' >Cerrar Sesión</button>
       </header>
@@ -42,7 +43,8 @@ export default function InicioAdmin() {
             </button>
           </form>
         </section>
-        <section>   /* Tarjetas de cada materia disponible */
+        <section>  
+          {/* Tarjetas de cada materia disponible */}
           <div>
             <header>
               <img src="imgMateria.png" alt="" />
