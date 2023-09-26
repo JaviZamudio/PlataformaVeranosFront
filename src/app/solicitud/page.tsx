@@ -9,6 +9,7 @@ export default function Registro() {
         <main>
             <section>
                 <h1>Registro de Materias</h1>
+                {/* Formulario  */}
                 <input type="text" name='Clave Materia'/>
                 <input type="text" name='Nombre de Materia'/>
                 <input type="text" name='Nombre de Alumno'/>
@@ -27,7 +28,8 @@ export default function Registro() {
                 <button type="submit">
                     <img src="upload.jpg" alt="" />
                 </button>
-                <input type="text" placeholder="Subir archivo"></input>/* No sé qué elemento vaya en realidad :/ */
+                {/* No sé qué elemento vaya en realidad :/ */}
+                <input type="text" placeholder="Subir archivo"></input>
                 </form>
                 <button>
                     Inscribirme

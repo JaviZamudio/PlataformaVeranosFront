@@ -10,19 +10,24 @@ export default function MateriasAdmin() {
         <main>
             <h1>Editar Materia</h1>
             <div>
-                <div>/* Lado izquierdo; Formulario  */
-                    <form action=""></form>/* Formulario para editar datos de la materia  */
+                {/* Lado izquierdo; Formulario  */}
+                <div>
+                    {/* Formulario para editar datos de la materia  */}
+                    <form action=""></form>
                         <div>
                             <p>Matera:</p>
-                            <p></p>/* Variable del nombre de la materia  */
+                            {/* Variable del nombre de la materia  */}
+                            <p></p>
                         </div>
                         <div>
                             <p>Clave de Materia</p>
-                            <p></p>/* Variable de la clave de la materia  */
+                            {/* Variable de la clave de la materia  */}
+                            <p></p>
                         </div>
                         <div>
                             <p>Semestre</p>
-                            <p></p>/* Variable del número de semestre de la materia  */
+                            {/* Variable del número de semestre de la materia  */}
+                            <p></p>
                         </div>
                         <div>
                             <label htmlFor="Profesor">Profesor:</label>
@@ -33,8 +38,10 @@ export default function MateriasAdmin() {
                             <input type="text" />
                         </div>
                 </div>
-                <div></div> /* Lado central; línea de color para marcar tipo de materia  */
-                <div>/* Lado derecho; imagen representativa del tipo de materia  */
+                {/* Lado central; línea de color para marcar tipo de materia  */}
+                <div></div> 
+                {/* Lado derecho; imagen representativa del tipo de materia  */}
+                <div>
                     <img src="" alt="" />
                 </div>
             </div>

@@ -1,32 +1,41 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link'
 import Header from '@/components/Header';
+import { Button } from "@material-tailwind/react";
 
 export default function Inicio() {
   return (
     <>
       <Header />
 
-      <header> /* Encabezado con logo de facultad y botones */
+      <header >
+        {/* Encabezado con logo de facultad y botones */}
         <h1>Plataforma Veranos UAQ</h1>
         <img src="public\logo.png" alt="" />
         <nav>
           <ul>
             <li>
-              <Link href="/">
-                Inicio
-              </Link>
+              <Button>  
+                <Link href="/">
+                  Inicio
+                </Link>
+              </Button>
             </li>
             <li>
-              <Link href="/solicitud">
-                Solicitar materia
-              </Link>
+              <Button>
+                <Link href="/solicitud">
+                  Solicitar materia
+                </Link>
+              </Button>
             </li>
           </ul>
         </nav>
       </header>
       <main>
-        <section> /* Seccion de filtros */
+        <section> 
+          {/* Seccion de filtros */}
           <label htmlFor="Carrera">Carrera</label>
           <select name="Carrera">
             <option value="inf">Licencitura en Informática</option>
@@ -49,7 +58,8 @@ export default function Inicio() {
             </button>
           </form>
         </section>
-        <section>   /* Tarjetas de cada materia disponible */
+        <section>   
+          {/* Tarjetas de cada materia disponible */}
           <div>
             <header>
               <img src="imgMateria.png" alt="" />

@@ -7,7 +7,8 @@ export default function Login() {
             <img src="public\logo.png" alt="" />
         </header>
         <main>
-            <div>/* Parte donde se ingresan los datos para ingresar al sistema */
+            {/* Parte donde se ingresan los datos para ingresar al sistema */}
+            <div>
                 <img src="profile.png" alt="" />
             </div>
             <label htmlFor="Usuario">Usuario:</label>
@@ -17,7 +18,7 @@ export default function Login() {
             <button type='submit'>Ingresar</button>
         </main>
         <aside>
-            /*Decoración pendiente (imagenes, texto, más elementos) */
+            {/*Decoración pendiente (imagenes, texto, más elementos) */}
         </aside>
         </>
     )
