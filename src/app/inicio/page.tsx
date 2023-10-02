@@ -1,38 +1,14 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link'
 import Header from '@/components/Header';
-import { Button } from "@material-tailwind/react";
+
 
 export default function Inicio() {
   return (
     <>
       <Header />
 
-      <header >
-        {/* Encabezado con logo de facultad y botones */}
-        <h1>Plataforma Veranos UAQ</h1>
-        <img src="public\logo.png" alt="" />
-        <nav>
-          <ul>
-            <li>
-              <Button>  
-                <Link href="/">
-                  Inicio
-                </Link>
-              </Button>
-            </li>
-            <li>
-              <Button>
-                <Link href="/solicitud">
-                  Solicitar materia
-                </Link>
-              </Button>
-            </li>
-          </ul>
-        </nav>
-      </header>
       <main>
         <section> 
           {/* Seccion de filtros */}
@@ -60,27 +36,29 @@ export default function Inicio() {
         </section>
         <section>   
           {/* Tarjetas de cada materia disponible */}
-          <div>
-            <header>
-              <img src="imgMateria.png" alt="" />
-            </header>
-            <main>
-              <h1>Nombre de la materia</h1>
-              <p>Carrera: </p>
-              <p>Semestre</p>
-            </main>
-            <hr />
-            <footer>
-              <button type='button'>
-                <img src="" alt="" />
-                Información
-              </button>
-              <button type='button'>
-                <img src="" alt="" />
-                Registrar
-              </button>
-            </footer>
-          </div>
+          
+           <div>
+             <header>
+               <img src="imgMateria.png" alt="" />
+             </header>
+             <main>
+               <h1>Nombre de la materia</h1>
+               <p>Carrera: </p>
+               <p>Semestre</p>
+             </main>
+             <hr />
+             <footer>
+               <button type='button'>
+                 <img src="" alt="" />
+                 Información
+               </button>
+               <button type='button'>
+                 <img src="" alt="" />
+                 Registrar
+               </button>
+             </footer>
+         </div>
+
         </section>
       </main>
     </>
