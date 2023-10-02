@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Header from '@/components/Header';
+import Tarjeta from '@/components/tarjetaMateria';
 
 
 export default function Inicio() {
@@ -34,30 +35,15 @@ export default function Inicio() {
             </button>
           </form>
         </section>
-        <section>   
-          {/* Tarjetas de cada materia disponible */}
-          
-           <div>
-             <header>
-               <img src="imgMateria.png" alt="" />
-             </header>
-             <main>
-               <h1>Nombre de la materia</h1>
-               <p>Carrera: </p>
-               <p>Semestre</p>
-             </main>
-             <hr />
-             <footer>
-               <button type='button'>
-                 <img src="" alt="" />
-                 Información
-               </button>
-               <button type='button'>
-                 <img src="" alt="" />
-                 Registrar
-               </button>
-             </footer>
-         </div>
+        <section className='p-20 grid grid-cols-3 gap-x-28 gap-y-10 content-start'>   
+      
+          <Tarjeta/>
+
+          <Tarjeta/>
+
+          <Tarjeta/>
+
+          <Tarjeta/>
 
         </section>
       </main>
