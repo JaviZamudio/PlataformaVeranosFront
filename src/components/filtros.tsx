@@ -9,7 +9,7 @@ export function Filtros() {
                 <Select variant="outlined" label="Carrera" className='bg-[#d9dfef]'>
                     <Option>Todos</Option>
                     <hr />
-                    <Option className='flex text-lg'>
+                    <Option className='flex items-center text-base'>
                         <Image src="/images/info.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
                             Licenciatura en Informática
