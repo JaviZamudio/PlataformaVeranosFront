@@ -9,45 +9,45 @@ export function Filtros() {
                 <Select variant="outlined" label="Carrera" className='bg-[#d9dfef]'>
                     <Option>Todos</Option>
                     <hr />
-                    <Option className='flex'>
-                        <Image src="/images/info.png" alt="" className='w-[40px] h-[40px] mr-2' height={100} width={100} />
+                    <Option className='flex text-lg'>
+                        <Image src="/images/info.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
-                            Licenciatura en informática
+                            Licenciatura en Informática
                         </p>
                     </Option>
-                    <Option>
-                        <Image src="/images/lati.png" alt="" className='inline-block' height={100} width={100} />
-                        <p className='inline-block'>
+                    <Option className='flex text-lg'>
+                        <Image src="/images/lati.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
+                        <p>
                             Licenciatura en Administración de las T.I.
                         </p>
                     </Option>
-                    <Option>
-                        <Image src="/images/soft.png" alt="" className='inline-block' height={100} width={100} />
-                        <p className='inline-block'>
+                    <Option className='flex text-lg'>
+                        <Image src="/images/soft.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
+                        <p>
                             Ingeniería de Software
                         </p>
                     </Option>
-                    <Option>
-                        <Image src="/images/compu.png" alt="" className='inline-block' height={100} width={100} />
-                        <p className='inline-block'>
+                    <Option className='flex text-lg'>
+                        <Image src="/images/compu.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
+                        <p>
                             Ingeniería en Computación
                         </p>
                     </Option>
-                    <Option>
-                        <Image src="/images/tele.png" alt="" className='inline-block' height={100} width={100} />
-                        <p className='inline-block'>
+                    <Option className='flex text-lg'>
+                        <Image src="/images/tele.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
+                        <p>
                             Ingeniería en Telecomunicaciones y Redes
                         </p>
                     </Option>
-                    <Option>
-                        <Image src="/images/icad.png" alt="" className='inline-block' height={100} width={100} />
-                        <p className='inline-block'>
+                    <Option className='flex text-lg'>
+                        <Image src="/images/icad.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
+                        <p>
                             Ingeniería en Ciencia y Analítica de Datos
                         </p>
                     </Option>
-                    <Option>
-                        <Image src="/images/itic22_1.png" alt="" className='inline-block' height={100} width={100} />
-                        <p className='inline-block'>
+                    <Option className='flex text-lg'>
+                        <Image src="/images/itic22_1.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
+                        <p>
                             Ingeniería en Tecnologías de Información y Ciberseguridad
                         </p>
                     </Option>
