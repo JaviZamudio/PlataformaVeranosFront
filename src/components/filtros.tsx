@@ -10,7 +10,7 @@ export function Filtros() {
                     <Option>Todos</Option>
                     <hr />
                     <Option className='flex'>
-                        <Image src="/images/info.png" alt="" className='!w-[25px] !h-[25px]' height={100} width={100} />
+                        <Image src="/images/info.png" alt="" className='w-[40px] h-[40px] mr-2' height={100} width={100} />
                         <p>
                             Licenciatura en informática
                         </p>
