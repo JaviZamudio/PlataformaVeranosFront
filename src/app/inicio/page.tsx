@@ -1,10 +1,29 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Tarjeta from '@/components/tarjetaMateria';
 import { Filtros } from '@/components/filtros';
 
+const [data, setData] = useState([]);
+
+  useEffect(() => {
+
+    async function fetchData() {
+      try {
+        const response = await fetch('/ruta'); 
+        if (!response.ok) {
+          throw new Error('La solicitud no fue exitosa.');
+        }
+        const responseData = await response.json();
+        setData(responseData);
+      } catch (error) {
+        console.error('Error en la solicitud: ', error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
 export default function Inicio() {
   return (

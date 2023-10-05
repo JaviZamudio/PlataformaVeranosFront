@@ -7,17 +7,17 @@ export default function Header() {
 
         <header className="relative w-full h-36 bg-[url('/images/fondoHeader.png')]">
             <img src="images/logoHeader.png" alt="" className='float-left h-[100px] w-auto' />
-            <nav className='absolute w-full h-10 bottom-0 bg-azul'>
+            <nav className='absolute w-full h-10 bottom-0 bg-azul-marino'>
              <ul className='float-right h-10 items-center'>
                 <li className='relative inline-block'>
-                <Button variant="text">  
+                <Button variant="text" className='text-white'>  
                     <Link href="/inicio">
                     Inicio
                     </Link>
                 </Button>
                 </li>
                 <li className='relative inline-block'>
-                <Button variant="text">
+                <Button variant="text" className='text-white'>
                     <Link href="/solicitud">
                     Solicitar materia
                     </Link>
