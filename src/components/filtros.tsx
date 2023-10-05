@@ -15,37 +15,37 @@ export function Filtros() {
                             Licenciatura en Informática
                         </p>
                     </Option>
-                    <Option className='flex text-lg'>
+                    <Option className='flex items-center text-base'>
                         <Image src="/images/lati.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
                             Licenciatura en Administración de las T.I.
                         </p>
                     </Option>
-                    <Option className='flex text-lg'>
+                    <Option className='flex items-center text-base'>
                         <Image src="/images/soft.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
                             Ingeniería de Software
                         </p>
                     </Option>
-                    <Option className='flex text-lg'>
+                    <Option className='flex items-center text-base'>
                         <Image src="/images/compu.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
                             Ingeniería en Computación
                         </p>
                     </Option>
-                    <Option className='flex text-lg'>
+                    <Option className='flex items-center text-base'>
                         <Image src="/images/tele.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
                             Ingeniería en Telecomunicaciones y Redes
                         </p>
                     </Option>
-                    <Option className='flex text-lg'>
+                    <Option className='flex items-center text-base'>
                         <Image src="/images/icad.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
                             Ingeniería en Ciencia y Analítica de Datos
                         </p>
                     </Option>
-                    <Option className='flex text-lg'>
+                    <Option className='flex items-center text-base'>
                         <Image src="/images/itic22_1.png" alt="" className='w-[40px] h-[40px] mr-4' height={100} width={100} />
                         <p>
                             Ingeniería en Tecnologías de Información y Ciberseguridad
