@@ -8,7 +8,9 @@ export function Filtros() {
             <div className='w-72'>
                 <Select variant="outlined" label="Carrera" className='bg-[#d9dfef]'>
                     <Option>
-                        <Image src="/images/info.png" alt="" className='inline-block' height={100} width={100} />
+                        <Option>Todos</Option>
+                        <hr />
+                        <Image src="/images/info.png" alt="" className='inline-block' height={25} width={25} />
                         <p className='inline-block'>
                             Licenciatura en informática
                         </p>
@@ -54,6 +56,8 @@ export function Filtros() {
 
             <div className='w-72'>
                 <Select variant="outlined" label="Semestre" className='bg-[#d9dfef]'>
+                    <Option>Todos</Option>
+                    <hr />
                     <Option>1er Semestre</Option>
                     <Option>2do Semestre</Option>
                     <Option>3er Semestre</Option>
@@ -75,7 +79,7 @@ export function Filtros() {
 
                 <Button
                     size="sm"
-                    className="!absolute right-0 bg-azul-oscuro"
+                    className="!absolute right-0 !rounded-l-none bg-azul-oscuro"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />

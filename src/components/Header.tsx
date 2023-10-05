@@ -10,14 +10,14 @@ export default function Header() {
             <nav className='absolute w-full h-10 bottom-0 bg-azul-marino'>
              <ul className='float-right h-10 items-center'>
                 <li className='relative inline-block'>
-                <Button variant="text" className='text-white'>  
+                <Button variant="text" className='rounded-none text-white'>  
                     <Link href="/inicio">
                     Inicio
                     </Link>
                 </Button>
                 </li>
                 <li className='relative inline-block'>
-                <Button variant="text" className='text-white'>
+                <Button variant="text" className='rounded-none text-white'>
                     <Link href="/solicitud">
                     Solicitar materia
                     </Link>
