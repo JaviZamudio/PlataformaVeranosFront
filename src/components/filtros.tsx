@@ -7,11 +7,11 @@ export function Filtros() {
         <>
             <div className='w-72'>
                 <Select variant="outlined" label="Carrera" className='bg-[#d9dfef]'>
-                    <Option>
-                        <Option>Todos</Option>
-                        <hr />
-                        <Image src="/images/info.png" alt="" className='inline-block' height={25} width={25} />
-                        <p className='inline-block'>
+                    <Option>Todos</Option>
+                    <hr />
+                    <Option className='flex'>
+                        <Image src="/images/info.png" alt="" className='!w-[25px] !h-[25px]' height={100} width={100} />
+                        <p>
                             Licenciatura en informática
                         </p>
                     </Option>
