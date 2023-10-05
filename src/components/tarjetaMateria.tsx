@@ -21,16 +21,18 @@ export default function Tarjeta() {
   return (
     <>
       <Dialog open={open} handler={handleOpen}>
-        <DialogHeader 
+      <Card className="bg-azul-oscuro w-[20rem] overflow-hidden">
+        <CardHeader
           color="transparent"
-          className="m-0 rounded-none object-center h-[120px] w-[320px]"        
+          className="m-0 rounded-none object-center h-[120px] w-[320px]"
         >
           <img
             src="images/Arquitectura de las computadoras.jpg"
             alt="Arquitectura de las computadoras"
           />
-        </DialogHeader>
-        <DialogBody className='relative py-[0.5rem] px-[1rem]'>
+        </CardHeader>
+
+        <CardBody className='relative py-[0.5rem] px-[1rem]'>
           <Typography variant="h4" color="white">
             Principios de electrónica y principios lógicos
           </Typography>
@@ -40,8 +42,11 @@ export default function Tarjeta() {
           <Typography variant="lead" color="white" className="mt-2 font-normal">
             Semestre: 4to
           </Typography>
-        </DialogBody>
-        <DialogFooter className="flex items-center justify-evenly p-0">
+        </CardBody>
+
+        <div className="relative bg-white left-[10px] w-[300px] h-[2px]" />
+
+        <CardFooter className="flex items-center justify-evenly p-0">
           <Button onClick={handleOpen} variant='text' className='flex items-center text-white'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -57,7 +62,8 @@ export default function Tarjeta() {
 
             <p className='relative inline-block'>Registrar</p>
           </Button>
-        </DialogFooter>
+        </CardFooter>
+      </Card>
       </Dialog>
 
 
