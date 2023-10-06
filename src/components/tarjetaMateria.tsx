@@ -22,7 +22,7 @@ export default function Tarjeta() {
         <Card className="bg-azul-oscuro overflow-hidden">
           <CardHeader
             color="transparent"
-            className="m-0 rounded-none object-center h-{270px} w-full"
+            className="m-0 rounded-none object-center !h-{270px} w-full"
           >
             <img
               src="images/Arquitectura de las computadoras.jpg"
@@ -32,7 +32,7 @@ export default function Tarjeta() {
 
           <CardBody className='relative py-[0.5rem] px-[1rem]'>
 
-            <Typography variant="h4" color="white">
+            <Typography variant="h3" color="white">
               Programación Orientada a Objetos
             </Typography>
 
@@ -65,10 +65,10 @@ export default function Tarjeta() {
               </div>
               <div className='w-1/2 inline-block'>
                 <div className='flex'>
-                  <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
+                  <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold top-0">
                     Clave:
                   </Typography>
-                  <Typography variant="lead" color="white" className="mt-2 font-normal">
+                  <Typography variant="lead" color="white" className="mt-2 font-normal top-0">
                     1102
                   </Typography>
                 </div>
