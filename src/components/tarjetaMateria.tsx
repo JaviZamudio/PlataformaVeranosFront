@@ -12,12 +12,13 @@ import {
 export default function Tarjeta() {
 
   const [open, setOpen] = React.useState(false);
-
+ 
   const handleOpen = () => setOpen(!open);
 
   return (
     <>
-      <Dialog open={open} handler={handleOpen} className='w-[48rem] h-[32rem]'>
+      <Dialog open={open}
+        handler={handleOpen} className='w-[48rem] h-[32rem]'>
         <Card className="bg-azul-oscuro overflow-hidden">
           <CardHeader
             color="transparent"
