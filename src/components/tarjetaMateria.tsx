@@ -17,11 +17,11 @@ export default function Tarjeta() {
 
   return (
     <>
-      <Dialog open={open} handler={handleOpen}>
-        <Card className="bg-azul-oscuro w-[48rem] overflow-hidden">
+      <Dialog open={open} handler={handleOpen} className='w-[48rem] h-[32rem]'>
+        <Card className="bg-azul-oscuro overflow-hidden">
           <CardHeader
             color="transparent"
-            className="m-0 rounded-none object-center h-[120px] w-[320px]"
+            className="m-0 rounded-none object-center h-[120px] w-full"
           >
             <img
               src="images/Arquitectura de las computadoras.jpg"
