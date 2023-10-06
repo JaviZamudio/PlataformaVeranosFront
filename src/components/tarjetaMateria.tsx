@@ -18,7 +18,7 @@ export default function Tarjeta() {
   return (
     <>
       <Dialog open={open}
-        handler={handleOpen} className='box-border w-[56rem] h-[32rem] rounded-xl'>
+        handler={handleOpen} className='box-border !w-[48rem] h-[32rem] rounded-xl'>
         <Card className="bg-azul-oscuro overflow-hidden">
           <CardHeader
             color="transparent"
