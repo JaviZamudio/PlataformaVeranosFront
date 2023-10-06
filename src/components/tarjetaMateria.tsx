@@ -18,7 +18,7 @@ export default function Tarjeta() {
   return (
     <>
       <Dialog open={open}
-        handler={handleOpen} className='w-[56rem] h-[32rem] rounded-xl'>
+        handler={handleOpen} className='box-border w-[56rem] h-[32rem] rounded-xl'>
         <Card className="bg-azul-oscuro overflow-hidden">
           <CardHeader
             color="transparent"
@@ -37,7 +37,7 @@ export default function Tarjeta() {
             </Typography>
 
             <div>
-              <div>
+              <div className='w-1/2 inline-block'>
                 <div className='flex'>
                   <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
                     Carreras:
@@ -46,16 +46,16 @@ export default function Tarjeta() {
                     Ingeniería de Software
                   </Typography>
                 </div>
-                <div>
-                  <Typography variant="lead" color="white" className="mt-2 font-semibold">
+                <div className='flex'>
+                  <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
                     Semestre:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
                     4to
                   </Typography>
                 </div>
-                <div>
-                  <Typography variant="lead" color="white" className="mt-2 font-semibold">
+                <div className='flex'>
+                  <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
                     Profesor:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
@@ -63,25 +63,25 @@ export default function Tarjeta() {
                   </Typography>
                 </div>
               </div>
-              <div>
-                <div>
-                  <Typography variant="lead" color="white" className="mt-2 font-semibold">
+              <div className='w-1/2 inline-block'>
+                <div className='flex'>
+                  <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
                     Clave:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
                     1102
                   </Typography>
                 </div>
-                <div>
-                  <Typography variant="lead" color="white" className="mt-2 font-semibold">
+                <div className='flex'>
+                  <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
                     Horario:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
                     9:00 AM - 1:00 PM
                   </Typography>
                 </div>
-                <div>
-                  <Typography variant="lead" color="white" className="mt-2 font-semibold">
+                <div className='flex'>
+                  <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
                     Costo:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
@@ -89,7 +89,9 @@ export default function Tarjeta() {
                   </Typography>
                 </div>
               </div>
-              <Typography variant="lead" color="white" className="mt-2 font-semibold">
+            </div>
+            <div className='flex'>
+              <Typography variant="lead" color="white" className="mt-2 mr-1 font-semibold">
                 Tipo de Materia:
               </Typography>
               <Typography variant="lead" color="white" className="mt-2 font-normal">
@@ -150,7 +152,7 @@ export default function Tarjeta() {
         <div className="relative bg-white left-[10px] w-[300px] h-[2px]" />
 
         <CardFooter className="flex items-center justify-evenly p-0">
-          <Button onClick={handleOpen} variant='text' className='flex items-center text-white'>
+          <Button onClick={handleOpen} variant='text' className='flex items-center text-white w-1/2'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
@@ -158,7 +160,7 @@ export default function Tarjeta() {
             <p className=''>Información</p>
           </Button>
 
-          <Button variant='text' className='flex items-center text-white'>
+          <Button variant='text' className='flex items-center text-white w-1/2'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
             </svg>
