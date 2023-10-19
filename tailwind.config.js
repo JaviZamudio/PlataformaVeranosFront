@@ -20,7 +20,8 @@ export default withMT ({
       'azul-marino': '#4060ab',
       'azul': '#4371fb',
       'azul-claro-1': '#6f94fe',
-      'azul-claro-2': '#8ea8ff'
+      'azul-claro-2': '#8ea8ff',
+      'gris-azul':'#d9dfef'
     },
   },
   plugins: [],

@@ -37,7 +37,7 @@ export default function Inicio() {
           <Filtros />
 
         </section>
-        <section className='px-20 grid grid-cols-3 gap-x-28 gap-y-10 content-start'>
+        <section className='px-20 grid grid-cols-3 gap-x-24 gap-y-10 content-start'>
 
           <Tarjeta />
 
@@ -46,8 +46,6 @@ export default function Inicio() {
           <Tarjeta />
 
           <Tarjeta />
-
-          <PopUp />
 
         </section>
       </main>
