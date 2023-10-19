@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Tarjeta from '@/components/tarjetaMateria';
 import { Filtros } from '@/components/filtros';
-import  PopUp  from '@/components/pop-up';
 
 
 export default function Inicio() {

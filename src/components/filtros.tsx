@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Select, Option, Input, Button, Typography } from "@material-tailwind/react";
+import React, { useState } from 'react';
+import { Input, Button } from "@material-tailwind/react";
 import Image from 'next/image';
 
 export function Filtros() {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
+    const [isDropdownVisible2, setDropdownVisible2] = useState(false);
+    const [selectedItemIndex2, setSelectedItemIndex2] = useState<number | null>(null);
     const subjectList = [
         {
             name: "Licenciatura en Informática",
@@ -50,6 +52,63 @@ export function Filtros() {
         }
     ];
 
+    const areaList = [
+
+        {
+            name: "Entorno Social",
+            value: "ensoc"
+        },
+
+        {
+            name: "Matemáticas",
+            value: "mate"
+        },
+
+        {
+            name: "Arquitectura de las computadoras",
+            value: "arqui"
+        },
+
+        {
+            name: "Tratamiento de la información",
+            value: "tinfo"
+        },
+
+        {
+            name: "Redes",
+            value: "redes"
+        },
+
+        {
+            name: "Interacción Hombre Máquina",
+            value: "Homaq"
+        },
+
+        {
+            name: "Software de base",
+            value: "softb"
+        },
+
+        {
+            name: "Programación e Ingeniería de Software",
+            value: "progs"
+        },
+
+        {
+            name: "Formación Universitaria",
+            value: "funiv"
+        },
+
+        {
+            name: "Inglés",
+            value: "ingles"
+        },
+
+        {
+            name: "Tópico",
+            value: "topic"
+        }
+    ]
 
 
     return (
@@ -78,7 +137,7 @@ export function Filtros() {
                     </div>
                     {
                         isDropdownVisible ? (
-                            <div className='absolute bg-gris-azul py-2 mt-2 px-4 top-[100%] max-w-xs rounded-md cursor-pointer z-10'>
+                            <div className='absolute bg-gris-azul py-2 mt-2 px-2 top-[100%] max-w-xs max-h-72 overflow-y-auto rounded-md cursor-pointer z-10'>
                                 {
                                     subjectList.map((item, index) => (
                                         <div key={item.value} className='flex items-center p-2 hover:bg-[#0001] hover:rounded-md' onClick={e => {
@@ -98,69 +157,47 @@ export function Filtros() {
                 </div>
             </div >
 
+            <div>
+                <div className='relative h-10 w-72 max-w-xs'>
+                    <div
+                        className='bg-gris-azul p-2 h-10 rounded-md cursor-pointer 
+                    text-blue-gray-700 text-opacity-95 font-sans font-normal border-solid border-blue-gray-200 border-[1px]'
 
-            {/*<div className='w-72'>
-                <Select variant="outlined" label="Carrera" className='flex items-center opacity-100 px-0 gap-2 bg-[#d9dfef]'>
-                    <Option>Todos</Option>
-                    <hr />
-                    <Option className='flex items-center gap-2'>
-                        <Image src="/images/info.png" alt="" className='w-[35px] h-[35px]' height={100} width={100} />
-                        <Typography variant='small'>
-                            Licenciatura en Informática
-                        </Typography>
-                    </Option>
-                    <Option className='flex items-center text-base'>
-                        <Image src="/images/lati.png" alt="" className='w-[35px] h-[35px] mr-4' height={100} width={100} />
-                        <Typography variant='small'>
-                            Licenciatura en Administración de las T.I.
-                        </Typography>
-                    </Option>
-                    <Option className='flex items-center text-base'>
-                        <Image src="/images/soft.png" alt="" className='w-[35px] h-[35px] mr-4' height={100} width={100} />
-                        <Typography variant='small'>
-                            Ingeniería de Software
-                        </Typography>
-                    </Option>
-                    <Option className='flex items-center text-base'>
-                        <Image src="/images/compu.png" alt="" className='w-[35px] h-[35px] mr-4' height={100} width={100} />
-                        <Typography variant='small'>
-                            Ingeniería en Computación
-                        </Typography>
-                    </Option>
-                    <Option className='flex items-center text-base'>
-                        <Image src="/images/tele.png" alt="" className='w-[35px] h-[35px] mr-4' height={100} width={100} />
-                        <Typography variant='small'>
-                            Ingeniería en Telecomunicaciones y Redes
-                        </Typography>
-                    </Option>
-                    <Option className='flex items-center text-base'>
-                        <Image src="/images/icad.png" alt="" className='w-[35px] h-[35px] mr-4' height={100} width={100} />
-                        <Typography variant='small'>
-                            Ingeniería en Ciencia y Analítica de Datos
-                        </Typography>
-                    </Option>
-                    <Option className='flex items-center text-base'>
-                        <Image src="/images/itic22_1.png" alt="" className='w-[35px] h-[35px] mr-4' height={100} width={100} />
-                        <Typography variant='small'>
-                            Ingeniería en Tecnologías de Información y Ciberseguridad
-                        </Typography>
-                    </Option>
-                </Select>
-            </div>*/}
+                        onClick={e => {
+                            setDropdownVisible2(!isDropdownVisible2);
+                        }}>
+                        <span>
+                            {selectedItemIndex2 != null
+                                ? areaList[selectedItemIndex2].name?.length > 27
+                                    ? areaList[selectedItemIndex2].name?.substring(0, 27) + "..."
+                                    : areaList[selectedItemIndex2].name
+                                : "Área"}
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"
+                            className={isDropdownVisible2 ? "inline-block absolute w-4 h-4 right-2 top-3 rotate-180" : "inline-block absolute w-4 h-4 right-2 top-3"}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
 
-            < div className='w-72' >
-                <Select variant="outlined" label="Semestre" className='bg-gris-azul'>
-                    <Option>Todos</Option>
-                    <hr />
-                    <Option>1er Semestre</Option>
-                    <Option>2do Semestre</Option>
-                    <Option>3er Semestre</Option>
-                    <Option>4to Semestre</Option>
-                    <Option>5to Semestre</Option>
-                    <Option>6to Semestre</Option>
-                    <Option>7mo Semestre</Option>
-                    <Option>8vo Semestre</Option>
-                </Select>
+                    </div>
+                    {
+                        isDropdownVisible2 ? (
+                            <div className='absolute bg-gris-azul py-2 mt-2 px-2 top-[100%] max-w-xs max-h-72 overflow-y-auto rounded-md cursor-pointer z-10'>
+                                {
+                                    areaList.map((item, index) => (
+                                        <div key={item.value} className='flex items-center p-2 hover:bg-[#0001] hover:rounded-md' onClick={e => {
+                                            setSelectedItemIndex2(index);
+                                            setDropdownVisible2(false);
+                                        }}>
+                                            <span>
+                                                {item.name}
+                                            </span>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        ) : <></>
+                    }
+                </div>
             </div >
 
             <div className="relative flex w-full max-w-[28rem]">
