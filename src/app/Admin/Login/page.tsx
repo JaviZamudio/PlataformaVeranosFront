@@ -49,7 +49,7 @@ const LoginPage = () => {
             <img
               src="/images/login admin image.jpg"
               alt=""
-              className="h-full w-full"
+              className="h-full w-full object-cover"
             />
           </div>
         </div>
