@@ -12,7 +12,17 @@ export default withMT ({
   // Or if using `src` directory:
   "./src/**/*.{js,ts,jsx,tsx,mdx}",],
   theme: {
-    extend: {},
+    extend: {
+     
+    },
+    colors: {
+      'azul-oscuro': '#162546',
+      'azul-marino': '#4060ab',
+      'azul': '#4371fb',
+      'azul-claro-1': '#6f94fe',
+      'azul-claro-2': '#8ea8ff',
+      'gris-azul':'#d9dfef'
+    },
   },
   plugins: [],
 }
