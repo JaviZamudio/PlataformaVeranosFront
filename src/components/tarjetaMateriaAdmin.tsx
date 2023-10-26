@@ -26,8 +26,8 @@ export default function TarjetaAdmin() {
             className="m-0 rounded-none h-[200px] w-full"
           >
             <img
-              src="images/Arquitectura de las computadoras.jpg"
-              alt="Arquitectura de las computadoras"
+              src="images/Programacion e ingenieria de software.jpg"
+              alt="Programacion e ingenieria de software"
             />
           </CardHeader>
 
@@ -133,13 +133,17 @@ export default function TarjetaAdmin() {
           className="m-0 rounded-none h-[120px] w-[320px]"
         >
           <img
-            src="images/Arquitectura de las computadoras.jpg"
-            alt="Arquitectura de las computadoras"
+            src="images/Programacion e ingenieria de software.jpg"
+            alt="Programacion e ingenieria de software"
             className='object-left h-[240] w-[]'
           />
         </CardHeader>
 
         <CardBody className='relative py-[0.5rem] px-[1rem]'>
+          <Typography variant="h5" color="white">
+            Programación Orientada a Objetos
+          </Typography>
+
           <div className='w-full inline-block'>
             <div className='flex relative'>
               <Typography variant="paragraph" color="white" className="mt-2 mr-1 font-semibold">
@@ -149,6 +153,7 @@ export default function TarjetaAdmin() {
                 Ingeniería de Software
               </Typography>
             </div>
+
             <div className='flex relative'>
               <Typography variant="paragraph" color="white" className="mt-2 mr-1 font-semibold">
                 Profesor:
@@ -157,6 +162,7 @@ export default function TarjetaAdmin() {
                 Carlos Alberto Olmos Trejo
               </Typography>
             </div>
+
             <div className='flex relative'>
               <Typography variant="paragraph" color="white" className="mt-2 mr-1 font-semibold">
                 Área:
@@ -165,6 +171,7 @@ export default function TarjetaAdmin() {
                 Programación e Ingeniería de Software
               </Typography>
             </div>
+
             <div className='flex relative'>
               <Typography variant="paragraph" color="white" className="mt-2 mr-1 font-semibold">
                 Clave:
@@ -173,6 +180,7 @@ export default function TarjetaAdmin() {
                 1102
               </Typography>
             </div>
+
             <div className='flex relative'>
               <Typography variant="paragraph" color="white" className="mt-2 mr-1 font-semibold">
                 Horario:
@@ -181,6 +189,7 @@ export default function TarjetaAdmin() {
                 9:00 AM - 11:00 AM
               </Typography>
             </div>
+
             <div className='flex relative'>
               <Typography variant="paragraph" color="white" className="mt-2 mr-1 font-semibold">
                 Costo:

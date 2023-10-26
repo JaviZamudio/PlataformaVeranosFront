@@ -1,12 +1,32 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TarjetaAdmin from '@/components/tarjetaMateriaAdmin';
 import Header from '@/components/HeaderAdmin'
 import { Filtros } from '@/components/filtros'
 
 
 export default function InicioAdmin() {
+
+  const [data, setData] = useState([]);
+
+  async function fetchData() {
+    try {
+      const response = await fetch('/ruta');
+      if (!response.ok) {
+        throw new Error('La solicitud no fue exitosa.');
+      }
+      const responseData = await response.json();
+      setData(responseData);
+    } catch (error) {
+      console.error('Error en la solicitud: ', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       {/* Encabezado con logo de facultad y botones */}
