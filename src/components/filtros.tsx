@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Button } from "@material-tailwind/react";
+import { Input, Button, Typography } from "@material-tailwind/react";
 import Image from 'next/image';
 
 export function Filtros() {
@@ -145,9 +145,9 @@ export function Filtros() {
                                             setDropdownVisible(false);
                                         }}>
                                             <Image alt='' src={item.img} width={50} height={50} className='h-12 w-12 object-cover' />
-                                            <span className='ml-4'>
+                                            <Typography variant='paragraph' className='ml-4'>
                                                 {item.name}
-                                            </span>
+                                            </Typography>
                                         </div>
                                     ))
                                 }
@@ -188,9 +188,9 @@ export function Filtros() {
                                             setSelectedItemIndex2(index);
                                             setDropdownVisible2(false);
                                         }}>
-                                            <span>
+                                            <Typography variant='paragraph' className='ml-3'>
                                                 {item.name}
-                                            </span>
+                                            </Typography>
                                         </div>
                                     ))
                                 }
@@ -201,6 +201,7 @@ export function Filtros() {
             </div >
 
             <div className="relative flex w-full max-w-[28rem]">
+
                 <Input
                     type='search'
                     label='Nombre o clave de la materia'

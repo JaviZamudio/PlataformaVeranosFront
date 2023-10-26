@@ -36,7 +36,7 @@ export default function Inicio() {
           <Filtros />
 
         </section>
-        <section className='px-20 grid grid-cols-3 gap-x-24 gap-y-10 content-start'>
+        <section className='px-20 mb-3 grid grid-cols-3 gap-x-24 gap-y-10 content-start'>
 
           <Tarjeta />
 
