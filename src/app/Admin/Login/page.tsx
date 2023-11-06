@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
+  const router = useRouter()
   const bodyStyle = {
     overflow: "hidden",
   };
@@ -27,11 +29,13 @@ const LoginPage = () => {
         localStorage.setItem("authToken", data.data);
 
         // Redireccionar al dashboard del admin
+        router.push('/Admin');
 
         alert("Login correcto");
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.message);
+        alert("Usuario y/o contraseña incorrectos");
       }
     } catch (error) {
       console.error("Error de red:", error);
