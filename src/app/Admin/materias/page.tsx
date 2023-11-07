@@ -3,19 +3,19 @@ import React from 'react';
 export default function MateriasAdmin() {
     return (
         <>
-        <header>
-            <img src="public\logo.png" alt="" />
-            <button typeof='button' >Cerrar Sesión</button>
-        </header>
-        <main>
-            <h1>Editar Materia</h1>
-            <div>
-                {/* Lado izquierdo; Formulario  */}
+            <header>
+                <img src="public\logo.png" alt="" />
+                <button typeof='button' >Cerrar Sesión</button>
+            </header>
+            <main>
+                <h1>Editar Materia</h1>
                 <div>
-                    {/* Formulario para editar datos de la materia  */}
-                    <form action=""></form>
+                    {/* Lado izquierdo; Formulario  */}
+                    <div>
+                        {/* Formulario para editar datos de la materia  */}
+                        <form action=""></form>
                         <div>
-                            <p>Matera:</p>
+                            <p>Materia:</p>
                             {/* Variable del nombre de la materia  */}
                             <p></p>
                         </div>
@@ -37,15 +37,15 @@ export default function MateriasAdmin() {
                             <label htmlFor="Horario">Horario:</label>
                             <input type="text" />
                         </div>
+                    </div>
+                    {/* Lado central; línea de color para marcar tipo de materia  */}
+                    <div></div>
+                    {/* Lado derecho; imagen representativa del tipo de materia  */}
+                    <div>
+                        <img src="" alt="" />
+                    </div>
                 </div>
-                {/* Lado central; línea de color para marcar tipo de materia  */}
-                <div></div> 
-                {/* Lado derecho; imagen representativa del tipo de materia  */}
-                <div>
-                    <img src="" alt="" />
-                </div>
-            </div>
-        </main>
+            </main>
         </>
     )
 }
