@@ -9,6 +9,11 @@ export function Filtros() {
     const [selectedItemIndex2, setSelectedItemIndex2] = useState<number | null>(null);
     const subjectList = [
         {
+            name: "Todos",
+            value: "todo",
+            img: ""
+        },
+        {
             name: "Licenciatura en Informática",
             value: "info",
             img: "/images/info.png"
@@ -53,7 +58,10 @@ export function Filtros() {
     ];
 
     const areaList = [
-
+        {
+            name: "Todos",
+            value: "todo"
+        },
         {
             name: "Entorno Social",
             value: "ensoc"
@@ -110,7 +118,6 @@ export function Filtros() {
         }
     ]
 
-
     return (
         <>
             <div>
@@ -144,7 +151,15 @@ export function Filtros() {
                                             setSelectedItemIndex(index);
                                             setDropdownVisible(false);
                                         }}>
-                                            <Image alt='' src={item.img} width={50} height={50} className='h-12 w-12 object-cover' />
+                                            {
+
+                                                item.img !== "" ? (
+
+                                                    <Image alt='' src={item.img} width={50} height={50} className='h-12 w-12 object-cover' />
+
+                                                ) : null
+
+                                            }
                                             <Typography variant='paragraph' className='ml-4'>
                                                 {item.name}
                                             </Typography>
