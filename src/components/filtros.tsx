@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Button, Typography } from "@material-tailwind/react";
 import Image from 'next/image';
+import { AnimatePresence, motion } from "framer-motion"
 
 export function Filtros() {
     const [isDropdownVisible, setDropdownVisible] = useState(false);
@@ -142,33 +143,42 @@ export function Filtros() {
                         </svg>
 
                     </div>
-                    {
-                        isDropdownVisible ? (
-                            <div className='absolute bg-gris-azul py-2 mt-2 px-2 top-[100%] max-w-xs max-h-72 overflow-y-auto rounded-md cursor-pointer z-10'>
-                                {
-                                    subjectList.map((item, index) => (
-                                        <div key={item.value} className='flex items-center p-2 hover:bg-[#0001] hover:rounded-md' onClick={e => {
-                                            setSelectedItemIndex(index);
-                                            setDropdownVisible(false);
-                                        }}>
-                                            {
+                    <AnimatePresence>
+                        {
+                            isDropdownVisible ? (
+                                <motion.div
+                                    initial={{ opacity: 0, y: "-50%" }}
+                                    animate={{ opacity: 1, y: "0%" }}
+                                    exit={{ opacity: 0, y: "-50%" }}
 
-                                                item.img !== "" ? (
 
-                                                    <Image alt='' src={item.img} width={50} height={50} className='h-12 w-12 object-cover' />
+                                    className='absolute bg-gris-azul py-2 mt-2 px-2 top-[100%] max-w-xs max-h-72 overflow-y-auto rounded-md cursor-pointer z-10'>
+                                    {
+                                        subjectList.map((item, index) => (
+                                            <div key={item.value} className='flex items-center p-2 hover:bg-[#0001] hover:rounded-md' onClick={e => {
+                                                setSelectedItemIndex(index);
+                                                setDropdownVisible(false);
+                                            }}>
+                                                {
 
-                                                ) : null
+                                                    item.img !== "" ? (
 
-                                            }
-                                            <Typography variant='paragraph' className='ml-4'>
-                                                {item.name}
-                                            </Typography>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        ) : <></>
-                    }
+                                                        <Image alt='' src={item.img} width={50} height={50} className='h-12 w-12 object-cover' />
+
+                                                    ) : null
+
+                                                }
+                                                <Typography variant='paragraph' className='ml-4'>
+                                                    {item.name}
+                                                </Typography>
+                                            </div>
+                                        ))
+                                    }
+                                </motion.div>
+                            ) : <></>
+                        }
+                    </AnimatePresence>
+                    <div></div>
                 </div>
             </div >
 
@@ -196,7 +206,11 @@ export function Filtros() {
                     </div>
                     {
                         isDropdownVisible2 ? (
-                            <div className='absolute bg-gris-azul py-2 mt-2 px-2 top-[100%] max-w-xs max-h-72 overflow-y-auto rounded-md cursor-pointer z-10'>
+                            <motion.div
+                                initial={{ opacity: 0, y: "-50%" }}
+                                animate={{ opacity: 1, y: "0%" }}
+                                exit={{ opacity: 0, y: "-50%" }}
+                                className='absolute bg-gris-azul py-2 mt-2 px-2 top-[100%] max-w-xs max-h-72 overflow-y-auto rounded-md cursor-pointer z-10'>
                                 {
                                     areaList.map((item, index) => (
                                         <div key={item.value} className='flex items-center p-2 hover:bg-[#0001] hover:rounded-md' onClick={e => {
@@ -209,7 +223,7 @@ export function Filtros() {
                                         </div>
                                     ))
                                 }
-                            </div>
+                            </motion.div>
                         ) : <></>
                     }
                 </div>
@@ -233,6 +247,10 @@ export function Filtros() {
                     </svg>
                 </Button>
             </div>
+            {/*initial={{ opacity: 0, y: "-50%" }}
+                                    animate={{ opacity: 1, y: "0%" }}
+                                    exit={{ opacity: 0, y: "-50%", transition: { duration: "0.35" } }}
+                                    transition={{ type: "spring", stiffness: "100", duration: "0.75" }}*/}
         </>
     );
 }
