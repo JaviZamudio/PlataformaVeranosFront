@@ -10,7 +10,20 @@ import {
 } from "@material-tailwind/react";
 import Link from 'next/link';
 
-export default function Tarjeta() {
+interface GroupData {
+  clave_materia: number;
+  nombre_materia: string;
+  area: string;
+  horario: string;
+  profesor: string;
+  costo: number;
+}
+
+interface TarjetaProps {
+  grupo: GroupData;
+}
+
+const Tarjeta: React.FC<TarjetaProps> = ({grupo}) => {
 
   const [open, setOpen] = React.useState(false);
 
@@ -34,7 +47,7 @@ export default function Tarjeta() {
           <CardBody className='relative py-[0.5rem] px-[1rem]'>
 
             <Typography variant="h3" color="white">
-              Programación Orientada a Objetos
+              {grupo.nombre_materia}
             </Typography>
 
             <div className='mt-4'>
@@ -60,7 +73,7 @@ export default function Tarjeta() {
                     Profesor:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
-                    Carlos Alberto Olmos Trejo
+                    {grupo.profesor}
                   </Typography>
                 </div>
               </div>
@@ -70,7 +83,7 @@ export default function Tarjeta() {
                     Clave:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal top-0">
-                    1102
+                    {grupo.clave_materia}
                   </Typography>
                 </div>
                 <div className='flex'>
@@ -78,7 +91,7 @@ export default function Tarjeta() {
                     Horario:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
-                    9:00 AM - 1:00 PM
+                    {grupo.horario}
                   </Typography>
                 </div>
                 <div className='flex'>
@@ -86,7 +99,7 @@ export default function Tarjeta() {
                     Costo:
                   </Typography>
                   <Typography variant="lead" color="white" className="mt-2 font-normal">
-                    $ 350
+                    {grupo.costo}
                   </Typography>
                 </div>
               </div>
@@ -141,7 +154,7 @@ export default function Tarjeta() {
 
         <CardBody className='relative py-[0.5rem] px-[1rem]'>
           <Typography variant="h5" color="white">
-            Principios de electrónica y principios lógicos
+            {grupo.nombre_materia}
           </Typography>
           <Typography variant="paragraph" color="white" className="mt-2 font-normal">
             Carreras: INF, SOF
@@ -174,3 +187,4 @@ export default function Tarjeta() {
     </>
   )
 }
+export default Tarjeta;
