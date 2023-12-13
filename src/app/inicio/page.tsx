@@ -8,15 +8,17 @@ import { Filtros } from '@/components/filtros';
 
 export default function Inicio() {
   const [data, setData] = useState([]);
+  const [areaFilter, setAreaFilter] = useState('todo');
+  const [searchQuery, setSearchQuery] = useState('');
 
   async function fetchData() {
     try {
-      const response = await fetch('http://localhost:3008/api/grupos');
+      console.log('Fetching data with filters:', areaFilter);
+      const response = await fetch(`http://localhost:3000/api/grupos?area=${areaFilter}&searchQuery=${searchQuery}`);
       if (!response.ok) {
         throw new Error('La solicitud no fue exitosa.');
       }
       const responseData = await response.json();
-      console.log(responseData);
       setData(responseData);
     } catch (error) {
       console.error('Error en la solicitud: ', error);
@@ -25,7 +27,7 @@ export default function Inicio() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [areaFilter, searchQuery]);
 
   return (
     <>
@@ -34,7 +36,10 @@ export default function Inicio() {
       <main>
         <section className='flex items-center gap-28 p-[80px]'>
 
-          <Filtros />
+          <Filtros
+          onAreaChange={(value) => setAreaFilter(value)}
+          onSearchChange={(value) => setSearchQuery(value)}
+          />
 
         </section>
         <section className='px-20 grid grid-cols-3 gap-x-24 gap-y-10 content-start'>
