@@ -3,7 +3,24 @@ import { Input, Button, Typography } from "@material-tailwind/react";
 import Image from 'next/image';
 import { AnimatePresence, motion } from "framer-motion"
 
-export function Filtros() {
+interface FiltrosProps {
+    onAreaChange: (value: any) => void;
+    onSearchChange: (value: any) => void;
+}
+
+export function Filtros({ onAreaChange, onSearchChange }: FiltrosProps) {
+
+    const handleAreaChange = (value: any) => {
+        console.log('Area changed:', value);
+        onAreaChange(value);
+        setDropdownVisible2(false);
+    };
+
+    const handleSearchChange = (value: any) => {
+        console.log('Search changed:', value);
+        onSearchChange(value);
+    };
+
     const [isDropdownVisible, setDropdownVisible] = useState(false);
     const [selectedItemIndex, setSelectedItemIndex] = useState<number | null>(null);
     const [isDropdownVisible2, setDropdownVisible2] = useState(false);
@@ -69,8 +86,18 @@ export function Filtros() {
         },
 
         {
+            name: "Software de base",
+            value: "softb"
+        },
+
+        {
             name: "Matemáticas",
             value: "mate"
+        },
+        
+        {
+            name: "Programación e Ingeniería de Software",
+            value: "progs"
         },
 
         {
@@ -79,33 +106,13 @@ export function Filtros() {
         },
 
         {
-            name: "Tratamiento de la información",
-            value: "tinfo"
-        },
-
-        {
-            name: "Redes",
-            value: "redes"
-        },
-
-        {
-            name: "Interacción Hombre Máquina",
-            value: "Homaq"
-        },
-
-        {
-            name: "Software de base",
-            value: "softb"
-        },
-
-        {
-            name: "Programación e Ingeniería de Software",
-            value: "progs"
-        },
-
-        {
             name: "Formación Universitaria",
             value: "funiv"
+        },
+
+        {
+            name: "Tratamiento de la información",
+            value: "tinfo"
         },
 
         {
@@ -114,8 +121,18 @@ export function Filtros() {
         },
 
         {
+            name: "Redes",
+            value: "redes"
+        },
+
+        {
             name: "Tópico",
             value: "topic"
+        },
+
+        {
+            name: "Interacción Hombre Máquina",
+            value: "Homaq"
         }
     ]
 
@@ -216,6 +233,11 @@ export function Filtros() {
                                         <div key={item.value} className='flex items-center p-2 hover:bg-[#0001] hover:rounded-md' onClick={e => {
                                             setSelectedItemIndex2(index);
                                             setDropdownVisible2(false);
+                                            if (index !== 0) {
+                                                handleAreaChange(index);
+                                            } else {
+                                                handleAreaChange(null);
+                                            }
                                         }}>
                                             <Typography variant='paragraph' className='ml-3'>
                                                 {item.name}
@@ -236,6 +258,7 @@ export function Filtros() {
                     label='Nombre o clave de la materia'
                     crossOrigin={undefined}
                     className='!bg-gris-azul'
+                    onChange={(e) => handleSearchChange(e.target.value)}
                 />
 
                 <Button
