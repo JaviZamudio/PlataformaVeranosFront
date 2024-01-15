@@ -10,6 +10,7 @@ import {
     Input
 } from "@material-tailwind/react";
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function MateriasAdmin() {
     return (
@@ -21,63 +22,65 @@ export default function MateriasAdmin() {
                 <Typography variant='h2'>
                     Editar Materia
                 </Typography>
-                <Card className="relative w-full h-[25rem] flex-row mt-5 bg-azul-claro-2 rounded-3xl">
+                <Card className="relative w-full h-[25rem] flex-row mt-5 bg-azul-marino rounded-3xl">
 
                     <CardBody className='h-full w-3/5 px-10 pt-8'>
                         <div className='flex'>
-                            <Typography variant='lead' color='black' className='font-semibold'>
+                            <Typography variant='lead' color='white' className='font-semibold'>
                                 Materia:
                             </Typography>
-                            <Typography variant='lead' color='black' >
+                            <Typography variant='lead' color='white' >
                                 Nombre de la materia
                             </Typography>
                         </div>
                         <div className='flex'>
-                            <Typography variant='lead' color='black' className='font-semibold mt-3'>
+                            <Typography variant='lead' color='white' className='font-semibold mt-3'>
                                 Clave:
                             </Typography>
-                            <Typography variant='lead' color='black' className='mt-3'>
+                            <Typography variant='lead' color='white' className='mt-3'>
                                 ####
                             </Typography>
                         </div>
                         <div className='flex'>
-                            <Typography variant='lead' color='black' className='font-semibold mt-3'>
+                            <Typography variant='lead' color='white' className='font-semibold mt-3'>
                                 Área:
                             </Typography>
-                            <Typography variant='lead' color='black' className='mt-3'>
+                            <Typography variant='lead' color='white' className='mt-3'>
                                 Nombre del área
                             </Typography>
                         </div>
-                        <div className=' mt-3'>
-                            <Input
-                                variant='standard'
-                                label='Profesor'
-                                color='black'
-                                crossOrigin={undefined}
-                                className='text-lg'
-                            />
-                        </div>
-                        <div className=' mt-3'>
-                            <Input
-                                variant='standard'
-                                label='Horario'
-                                color='black'
-                                crossOrigin={undefined}
-                                className='text-lg'
-                            />
-                        </div>
-                        <div className=' mt-3'>
-                            <Input
-                                variant='standard'
-                                label='Costo'
-                                color='black'
-                                crossOrigin={undefined}
-                                className='text-lg'
-                            />
+                        <div className='w-3/5'>
+                            <div className=' mt-3'>
+                                <Input
+                                    variant='standard'
+                                    label='Profesor'
+                                    color='white'
+                                    crossOrigin={undefined}
+                                    className='text-lg'
+                                />
+                            </div>
+                            <div className=' mt-3'>
+                                <Input
+                                    variant='standard'
+                                    label='Horario'
+                                    color='white'
+                                    crossOrigin={undefined}
+                                    className='text-lg'
+                                />
+                            </div>
+                            <div className=' mt-3'>
+                                <Input
+                                    variant='standard'
+                                    label='Costo'
+                                    color='white'
+                                    crossOrigin={undefined}
+                                    className='text-lg'
+                                />
+                            </div>
                         </div>
                         <Button variant='filled' className='flex mt-5 h-12 w-32 text-base bg-azul-oscuro'>
                             <Typography>
-                                Guardar
+                                <Link href="/Admin">Guardar</Link>
                             </Typography>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
