@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/HeaderAdmin'
 import {
     Card,
@@ -13,6 +13,28 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function MateriasAdmin() {
+
+    const [data, setData] = useState([]);
+
+    async function fetchData() {
+        try {
+            const response = await fetch('http://localhost:3008/api/grupos');
+            if (!response.ok) {
+                throw new Error('La solicitud no fue exitosa.');
+            }
+            const responseData = await response.json();
+            console.log(responseData);
+            setData(responseData);
+        } catch (error) {
+            console.error('Error en la solicitud: ', error);
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+
     return (
         <>
 
@@ -78,20 +100,23 @@ export default function MateriasAdmin() {
                                 />
                             </div>
                         </div>
-                        <Button variant='filled' className='flex mt-5 h-12 w-32 text-base bg-azul-oscuro'>
+                        <Button onClick={() => { alert('Se ha guardado exitosamente'); }}
+                            variant='filled'
+                            className='flex mt-5 h-12 w-32 text-base bg-azul-oscuro'>
                             <Typography>
                                 <Link href="/Admin">Guardar</Link>
                             </Typography>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" />
                             </svg>
-
                         </Button>
                     </CardBody>
+                    {/* Barra para que identifica el tipo de materia dependiendo su color */}
+                    <div className="absolute h-[25rem] w-4 right-[416px] bg-red-900"></div>
                     <div
                         className="absolute right-0 m-0 w-2/5 h-full overflow-hidden rounded-r-3xl">
                         <Image
-                            src="/images/Arquitectura de las computadoras.jpg"
+                            src="/images/Ingles.jpg"
                             alt="imagen materia"
                             className="h-full w-full object-none object-center"
                             width={700}
