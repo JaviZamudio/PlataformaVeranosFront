@@ -4,10 +4,11 @@ import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Tarjeta from '@/components/tarjetaMateria';
 import NewFiltros from '@/components/NewFiltros';
+import NewTarjeta from '@/components/NewTarjeta';
 
 
 export default function Inicio() {
-  const [data, setData] = useState([]);
+  const [grupos, setGrupos] = useState([]);
 
   async function fetchData() {
     try {
@@ -17,7 +18,7 @@ export default function Inicio() {
       }
       const responseData = await response.json();
       console.log(responseData);
-      setData(responseData);
+      setGrupos(responseData);
     } catch (error) {
       console.error('Error en la solicitud: ', error);
     }
@@ -31,18 +32,21 @@ export default function Inicio() {
     <>
       <Header />
 
-      <main className='flex flex-col w-full'>
-        {/* <section className='flex items-center justify-around mt-8'>
-          <Filtros />
-        </section> */}
-
+      <main className='flex flex-col w-full items-center p-4'>
         <NewFiltros />
 
-        <section className='px-20 grid grid-cols-3 gap-x-24 gap-y-10 content-start'>
-          {data.map((grupo, index) => (
+        <section className='grid grid-cols-4 max-w-7xl'>
+          {grupos.map((grupo, index) => (
             <Tarjeta key={index} grupo={grupo} />
           ))}
         </section>
+
+        <section className='grid grid-cols-3 xl:grid-cols-4 max-w-7xl mt-4 gap-6 '>
+          {grupos.map((grupo, index) => (
+            <NewTarjeta key={index} group={grupo} />
+          ))}
+        </section>
+
       </main>
     </>
   )
