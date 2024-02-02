@@ -1,7 +1,7 @@
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import Image from "next/image";
 
-const subjectList = [
+const careersList = [
   {
     name: "Todos",
     value: "todo",
@@ -115,8 +115,8 @@ const areaList = [
 export default function NewFiltros() {
   return (
     <div className="flex items-center justify-around my-4 w-full max-w-7xl gap-8">
-      <Select placeholder="Selecciona una materia" label="Materia" className="max-w-sm">
-        {subjectList.map((item) => (
+      <Select placeholder="Selecciona una carrera" label="Carreras" className="max-w-sm">
+        {careersList.map((item) => (
           <SelectItem key={item.value} value={item.value} startContent={item.img && <Image src={item.img} alt={item.name} width={30} height={30} />} >
             {item.name}
           </SelectItem>

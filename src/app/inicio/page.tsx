@@ -35,12 +35,6 @@ export default function Inicio() {
       <main className='flex flex-col w-full items-center p-4'>
         <NewFiltros />
 
-        <section className='grid grid-cols-4 max-w-7xl'>
-          {grupos.map((grupo, index) => (
-            <Tarjeta key={index} grupo={grupo} />
-          ))}
-        </section>
-
         <section className='grid grid-cols-3 xl:grid-cols-4 max-w-7xl mt-4 gap-6 '>
           {grupos.map((grupo, index) => (
             <NewTarjeta key={index} group={grupo} />
