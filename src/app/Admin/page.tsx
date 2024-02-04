@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import TarjetaAdmin from '@/components/tarjetaMateriaAdmin';
-import Header from '@/components/HeaderAdmin'
+import AdminHeader from '@/components/HeaderAdmin'
 import { Filtros } from '@/components/filtros'
 
 
@@ -29,9 +29,6 @@ export default function InicioAdmin() {
 
   return (
     <>
-      {/* Encabezado con logo de facultad y botones */}
-
-      <Header />
 
       <main>
         { /* Seccion de filtros */}

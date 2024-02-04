@@ -1,9 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useRouter } from 'next/navigation';
+import AdminHeader from "@/components/HeaderAdmin";
+import { Button, Input } from "@nextui-org/react";
+import { HOST } from "@/configs";
+import Image from "next/image";
+import { AuthContext } from "@/contexts/AuthContext";
 
 const LoginPage = () => {
   const router = useRouter()
+  const { login } = useContext(AuthContext);
   const bodyStyle = {
     overflow: "hidden",
   };
@@ -14,91 +20,74 @@ const LoginPage = () => {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("http://localhost:3000/api/admin/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+    const resBody = await fetch(`${HOST}/api/admin/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    }).then(res => res.json())
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        localStorage.setItem("authToken", data.data);
 
-        // Redireccionar al dashboard del admin
-        router.push('/Admin');
-
-        alert("Login correcto");
-      } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.message);
-        alert("Usuario y/o contraseña incorrectos");
-      }
-    } catch (error) {
-      console.error("Error de red:", error);
-      setErrorMessage("Error de red");
+    if (resBody.code !== "OK") {
+      const errorData = await resBody.message
+      setErrorMessage(errorData.message);
+      alert("Usuario y/o contraseña incorrectos");
+      console.log(resBody)
+      return;
     }
+
+    alert("Login correcto");
+    login(resBody.data);
   };
 
   return (
     <>
-      <header className="bg-indigo-900 w-full fixed">
-        <nav className="float-left overflow-hidden block p-1">
-          <img src="/images/logoHeader.png" alt="" className="navlogo" />
-        </nav>
-      </header>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="flex">
-          <div className="w-1/2 bg-gray-200 h-screen">
-            <div className="h-full flex flex-col justify-center items-center">
-              <h2 className="text-2xl">Login</h2>
-              <form className="w-64 mt-6" onSubmit={handleLogin}>
-                <label htmlFor="username">Usuario:</label>
-                <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  required
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  className="w-full p-2 border rounded my-1"
-                />
-                <label htmlFor="password">Contraseña:</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full p-2 border rounded my-1"
-                />
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    className="bg-indigo-900 text-white p-2 rounded mt-4 cursor-pointer hover:bg-indigo-700"
-                  >
-                    Iniciar sesión
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div className="w-1/2 bg-cover bg-center h-screen image-container">
-            <img
-              src="/images/login admin image.jpg"
-              alt=""
-              className="h-full w-full object-cover"
+      {/* Main */}
+      <div className="flex grow justify-stretch items-stretch bg-gray-100">
+        {/* Login form*/}
+        <div className="w-1/2 flex flex-col justify-center items-center">
+          <h2 className="text-2xl">Login</h2>
+          <form className="w-full max-w-xs mt-6 flex flex-col gap-4" onSubmit={handleLogin}>
+            <Input
+              label="Usuario"
+              placeholder="Escribe tu usuario"
+              variant="bordered"
+              autoComplete="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              isRequired
             />
-          </div>
+            <Input
+              label="Contraseña"
+              placeholder="Escribe tu contraseña"
+              variant="bordered"
+              type="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              isRequired
+            />
+            <Button
+              type="submit"
+              color="primary"
+              className="w-full mt-2"
+            >
+              Iniciar sesión
+            </Button>
+
+            {errorMessage && <p className="text-red-600">{errorMessage}</p>}
+          </form>
         </div>
+        <Image
+          src="/images/login admin image.jpg"
+          alt=""
+          className="w-1/2 grow object-cover"
+          priority
+          width={1000}
+          height={1000}
+        />
       </div>
-      {errorMessage && (
-        <div className="mt-4 text-red-500">{errorMessage}</div>
-      )}
     </>
   );
 };

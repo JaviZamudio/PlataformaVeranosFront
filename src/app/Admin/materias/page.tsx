@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import Header from '@/components/HeaderAdmin'
+import AdminHeader from '@/components/HeaderAdmin'
 import {
     Card,
     CardBody,
@@ -38,7 +38,7 @@ export default function MateriasAdmin() {
     return (
         <>
 
-            <Header />
+            <AdminHeader />
 
             <main className='px-32 pt-10'>
                 <Typography variant='h2'>
