@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
-import Tarjeta from '@/components/tarjetaMateria';
 import NewFiltros from '@/components/NewFiltros';
 import NewTarjeta from '@/components/NewTarjeta';
 
@@ -40,7 +39,6 @@ export default function Inicio() {
             <NewTarjeta key={index} group={grupo} />
           ))}
         </section>
-
       </main>
     </>
   )

@@ -10,6 +10,7 @@ interface GroupData {
   nombre_materia: string;
   area: string;
   area_img: string;
+  inscritos: number;
   horario: string;
   profesor: string;
   costo: number;
@@ -62,6 +63,10 @@ export default function NewTarjeta({ group }: { group: GroupData }) {
                 <p className="text-base font-semibold">Clave:</p>
                 <p className="text-base ml-2">{group.clave_materia}</p>
               </div>
+              <div className="flex items-center col-span-2">
+                <p className="text-base font-semibold">Registrados:</p>
+                <p className="text-base ml-2">{`${group.inscritos}/20 para abrir el grupo`}</p>
+              </div>
             </div>
           </ModalBody>
           <ModalFooter>
@@ -105,6 +110,12 @@ export default function NewTarjeta({ group }: { group: GroupData }) {
           <div className="flex items-center">
             <p className="text-base font-semibold">Carreras:</p>
             <p className="text-base ml-2">{group.carreras.join(", ")}</p>
+          </div>
+
+          {/* Inscritos */}
+          <div className="flex items-center">
+            <p className="text-base font-semibold">Registrados:</p>
+            <p className="text-base ml-2">{`${group.inscritos}/20`}</p>
           </div>
         </CardBody>
 

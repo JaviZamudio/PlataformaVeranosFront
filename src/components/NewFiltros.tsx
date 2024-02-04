@@ -113,9 +113,10 @@ const areaList = [
 ]
 
 export default function NewFiltros() {
+  // TODO: Add functionality to the filters
   return (
-    <div className="flex items-center justify-around my-4 w-full max-w-7xl gap-8">
-      <Select placeholder="Selecciona una carrera" label="Carreras" className="max-w-sm">
+    <div className="flex items-center my-4 w-full max-w-7xl gap-8">
+      <Select placeholder="Selecciona una carrera" label="Carreras" className="max-w-xs">
         {careersList.map((item) => (
           <SelectItem key={item.value} value={item.value} startContent={item.img && <Image src={item.img} alt={item.name} width={30} height={30} />} >
             {item.name}
@@ -123,7 +124,7 @@ export default function NewFiltros() {
         ))}
       </Select>
 
-      <Select placeholder="Selecciona un área" label="Área" className="max-w-sm">
+      <Select placeholder="Selecciona un área" label="Área" className="max-w-xs">
         {areaList.map((item) => (
           <SelectItem key={item.value} value={item.value}>
             {item.name}
@@ -132,7 +133,7 @@ export default function NewFiltros() {
       </Select>
 
       {/* Search by id */}
-      <Input placeholder="Buscar por Clave" label="Clave" maxLength={5} className="max-w-xs" endContent={<Button isIconOnly size="sm" variant="faded" radius="lg"><span className="material-symbols-outlined !text-xl">search</span></Button>} />
+      <Input placeholder="Buscar por Clave" label="Clave" maxLength={5} className="ml-auto max-w-xs" endContent={<Button isIconOnly size="sm" variant="faded" radius="lg"><span className="material-symbols-outlined !text-xl">search</span></Button>} />
     </div>
   )
 }
