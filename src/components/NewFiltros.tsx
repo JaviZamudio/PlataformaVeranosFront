@@ -115,7 +115,7 @@ const areaList = [
 export default function NewFiltros() {
   // TODO: Add functionality to the filters
   return (
-    <div className="flex items-center my-4 w-full max-w-7xl gap-8">
+    <div className="flex items-center my-4 w-full max-w-6xl gap-8">
       <Select placeholder="Selecciona una carrera" label="Carreras" className="max-w-xs">
         {careersList.map((item) => (
           <SelectItem key={item.value} value={item.value} startContent={item.img && <Image src={item.img} alt={item.name} width={30} height={30} />} >

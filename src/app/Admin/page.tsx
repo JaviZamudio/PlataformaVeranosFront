@@ -1,52 +1,67 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import TarjetaAdmin from '@/components/tarjetaMateriaAdmin';
 import AdminHeader from '@/components/HeaderAdmin'
 import { Filtros } from '@/components/filtros'
+import NewFiltros from '@/components/NewFiltros';
+import { HOST } from '@/configs';
+import NewTarjetaAdmin from '@/components/NewTarjetaAdmin';
+import { AuthContext } from '@/contexts/AuthContext';
 
+interface GroupData {
+  id_grupo: string;
+  clave_materia: number;
+  nombre_materia: string;
+  area: string;
+  area_img: string;
+  inscritos: number;
+  horario: string;
+  profesor: string;
+  costo: number;
+  carreras: string[];
+}
 
 export default function InicioAdmin() {
-
-  const [data, setData] = useState([]);
+  const { token } = useContext(AuthContext);
+  const [grupos, setGroups] = useState<GroupData[]>([]);
 
   async function fetchData() {
-    try {
-      const response = await fetch('/ruta');
-      if (!response.ok) {
-        throw new Error('La solicitud no fue exitosa.');
-      }
-      const responseData = await response.json();
-      setData(responseData);
-    } catch (error) {
-      console.error('Error en la solicitud: ', error);
+    if (!token) {
+      console.log('No hay token');
+      return;
     }
+
+    const resBody = await fetch(`${HOST}/api/admin/groups`, {
+      method: 'GET',
+      headers: {
+        'Authorization': token || ''
+      }
+    }).then(res => res.json());
+
+    console.log('resBody', resBody);
+
+    if (resBody.code !== "OK") {
+      console.error('Error en la solicitud: ', resBody);
+      return;
+    }
+
+    setGroups(resBody.data);
   }
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [token]);
 
   return (
-    <>
+    <main className="p-4 flex flex-col items-center">
+      <NewFiltros />
 
-      <main>
-        { /* Seccion de filtros */}
-        <section className='flex items-center gap-28 p-[80px]'>
-          <Filtros />
-        </section>
-        <section className='relative px-20 mb-3 grid grid-cols-3 gap-x-24 gap-y-10 content-start'>
-
-          <TarjetaAdmin />
-
-          <TarjetaAdmin />
-
-          <TarjetaAdmin />
-
-          <TarjetaAdmin />
-
-        </section>
-      </main >
-    </>
+      <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-6xl">
+        {grupos.map((grupo, i) => {
+          return <NewTarjetaAdmin key={i} group={grupo} />
+        })}
+      </div>
+    </main >
   )
 }
