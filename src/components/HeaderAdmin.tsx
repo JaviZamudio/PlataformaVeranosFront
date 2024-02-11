@@ -3,7 +3,7 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@nextui-org/react';
+import { Button, Divider } from '@nextui-org/react';
 import { AuthContext } from '@/contexts/AuthContext';
 
 export default function AdminHeader() {
@@ -15,44 +15,47 @@ export default function AdminHeader() {
         <Image src="/images/logoHeader.png" alt="hero" className='h-24 w-auto absolute' width={700} height={70} />
       </div>
       {token &&
-        <nav className='w-full h-10 bg-azul-marino flex justify-end px-4'>
-          <ul className='h-full items-center'>
-            <li className='inline-block'>
-              <Button
-                variant="light"
-                color="primary"
-                size="md"
-                href='/admin'
-                as={Link}
-                className='rounded-none text-white'
-              >
-                Inicio
-              </Button>
-            </li>
-            {/* <li className='inline-block'>
-            <Button
-              variant="light"
-              color="primary"
-              size="md"
-              href='/solicitud'
-              as={Link}
-              className='rounded-none text-white'
-            >
-              Crear Grupo
-            </Button>
-          </li> */}
-            <li className='inline-block'>
-              <Button
-                variant="light"
-                color="danger"
-                size="md"
-                onPress={logout}
-                className='rounded-none text-white'
-              >
-                Cerrar Sesión
-              </Button>
-            </li>
-          </ul>
+        <nav className='w-full bg-azul-marino flex justify-end px-4 items-center'>
+          <Button
+            variant="light"
+            color="primary"
+            size="md"
+            href='/admin'
+            as={Link}
+            className='rounded-none text-white gap-1'
+            startContent={
+              <span className="material-symbols-outlined">home</span>
+            }
+          >
+            Inicio
+          </Button>
+          <Divider orientation='vertical' className='h-6 bg-content3' />
+          <Button
+            variant="light"
+            color="primary"
+            size="md"
+            href='/admin/grupos/crear'
+            as={Link}
+            className='rounded-none text-white gap-1'
+            startContent={
+              <span className="material-symbols-outlined">add</span>
+            }
+          >
+            Crear Grupo
+          </Button>
+          {/* <Divider orientation='vertical' className='h-6 bg-content3' />
+          <Button
+            variant="light"
+            color="danger"
+            size="md"
+            onPress={logout}
+            className='rounded-none text-white gap-1'
+            startContent={
+              <span className="material-symbols-outlined">logout</span>
+            }
+          >
+            Cerrar Sesión
+          </Button> */}
         </nav>
       }
     </header>

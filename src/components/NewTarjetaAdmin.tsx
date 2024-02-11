@@ -79,15 +79,6 @@ export default function NewTarjetaAdmin({ group }: { group: GroupData }) {
             >
               Cerrar
             </Button>
-            {/* <Button
-              color="primary"
-              onPress={() => router.push(`/solicitud?materia=${group.clave_materia}`)}
-              startContent={
-                <span className="material-symbols-outlined !text-lg">edit_square</span>
-              }
-            >
-              Registrar
-            </Button> */}
 
             <Button
               color="primary"
