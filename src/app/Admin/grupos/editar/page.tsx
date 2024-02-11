@@ -1,58 +1,100 @@
 "use client"
 
+import { HOST } from "@/configs";
+import { AuthContext } from "@/contexts/AuthContext";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useContext, useEffect, useRef, useState } from "react";
 
-interface Materia {
-  clave: string;
-  nombre: string;
-}
-
-export default function CrearGrupo() {
-  const [materias, setMaterias] = useState<Materia[]>([]);
+export default function EditarGrupo() {
+  const groupId = useSearchParams().get('group') || "";
+  const router = useRouter();
+  const { token } = useContext(AuthContext);
+  const [group, setGroup] = useState({
+    horaInicio: "",
+    horaFin: "",
+    costo: "",
+    profesor: "",
+    nombreMateria: "",
+  });
   const [form, setForm] = useState({
-    materia: "",
     horaInicio: "",
     horaFin: "",
     costo: "",
     profesor: "",
   });
 
-  const getMaterias = async () => {
-    setMaterias([
-      { clave: "1234", nombre: "Materia 1" },
-      { clave: "5678", nombre: "Materia 2" },
-    ])
+  const getGroup = async () => {
+    const resBody = await fetch(`${HOST}/api/admin/groups/${groupId}`).then(res => res.json());
+    console.log('resBody', resBody);
+
+    if (resBody.code !== "OK") {
+      console.error('Error en la solicitud: ', resBody);
+      return;
+    }
+
+    setGroup({
+      horaInicio: resBody.data.hora_inicio,
+      horaFin: resBody.data.hora_fin,
+      costo: resBody.data.costo,
+      profesor: resBody.data.profesor,
+      nombreMateria: resBody.data.materia.nombre,
+    });
+
+    setForm({
+      horaInicio: resBody.data.hora_inicio || "",
+      horaFin: resBody.data.hora_fin || "",
+      costo: resBody.data.costo || "",
+      profesor: resBody.data.profesor || "",
+    });
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('form', form);
+
+    const payload = {
+      hora_inicio: form.horaInicio,
+      hora_fin: form.horaFin,
+      costo: form.costo,
+      profesor: form.profesor,
+    };
+
+    const resBody = await fetch(`${HOST}/api/admin/groups/${groupId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token || ''
+      },
+      body: JSON.stringify(payload)
+    }).then(res => res.json());
+
+    console.log('resBody', resBody);
+
+    if (resBody.code !== "OK") {
+      console.error('Error en la solicitud: ', resBody);
+      return;
+    }
+
+    alert('Grupo actualizado correctamente');
+    router.push('/admin');
   }
 
   useEffect(() => {
-    getMaterias();
+    groupId && getGroup();
   }, []);
 
   return (
     <main className="p-4 flex flex-col">
       <h1 className="text-3xl font-medium mt-4">
-        Crear Grupo
+        Editar Grupo:
       </h1>
+      <h2 className="text-2xl font-medium mt-2">
+        {group.nombreMateria}
+      </h2>
 
       <form className="flex flex-col gap-4 w-full max-w-md mt-4" onSubmit={handleSubmit}>
-        <Select
-          label="Materia"
-          placeholder="Selecciona una materia"
-          value={form.materia}
-          onChange={e => setForm({ ...form, materia: e.target.value })}
-          isRequired
-        >
-          {materias.map(materia => (
-            <SelectItem key={materia.clave} value={materia.clave}>{materia.nombre}</SelectItem>
-          ))}
-        </Select>
         <Input
           label="Hora de inicio"
           type="time"
@@ -81,9 +123,11 @@ export default function CrearGrupo() {
           value={form.profesor}
           onValueChange={value => setForm({ ...form, profesor: value })}
         />
-
+        <Button color="primary" variant="bordered" as={Link} href={`/admin`} tabIndex={-1}>
+          Cancelar
+        </Button>
         <Button color="primary" type="submit">
-          Crear Grupo
+          Guardar
         </Button>
       </form>
     </main>

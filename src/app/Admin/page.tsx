@@ -10,7 +10,7 @@ import GroupInfoModal from '@/components/GroupInfoModal';
 import Link from 'next/link';
 
 interface GroupData {
-  id_grupo: string;
+  grupo_id: string;
   clave_materia: number;
   nombre_materia: string;
   area: string;
@@ -118,7 +118,7 @@ export default function InicioAdmin() {
                       variant="faded"
                       size='md'
                       as={Link}
-                      href={`/admin/grupos/editar?materia=${materia.clave}`}
+                      href={`/admin/grupos/editar?group=${materia.grupo.grupo_id}`}
                       startContent={
                         <span className="material-symbols-outlined">edit</span>
                       }

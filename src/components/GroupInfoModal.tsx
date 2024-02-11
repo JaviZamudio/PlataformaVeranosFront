@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { ReactElement, cloneElement, useState } from "react";
 
 interface GroupData {
+  grupo_id: string;
   clave_materia: number;
   nombre_materia: string;
   area: string;
@@ -87,7 +88,7 @@ export default function GroupInfoModal({ group, children }: { group: GroupData, 
               }
               // onPress={() => router.push(`/admin/grupos/${group.id_grupo}`)}
               as={Link}
-              href={`/admin/grupos/editar?materia=${group.clave_materia}`}
+              href={`/admin/grupos/editar?group=${group.grupo_id}`}
             >
               Editar
             </Button>
