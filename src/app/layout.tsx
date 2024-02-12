@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: 'Plataforma para la gestión de materias de verano en la UAQ',
 }
 
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({
   children,
 }: {
