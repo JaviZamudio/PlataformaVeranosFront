@@ -27,7 +27,7 @@ export default function EditarGrupo() {
 
   const getGroup = async () => {
     const resBody = await fetch(`${HOST}/api/admin/groups/${groupId}`).then(res => res.json());
-    console.log('resBody', resBody);
+    console.log('Datos del grupo obtenidos', resBody);
 
     if (resBody.code !== "OK") {
       console.error('Error en la solicitud: ', resBody);
@@ -52,13 +52,13 @@ export default function EditarGrupo() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('form', form);
+    console.log('Formulario enviado para actualizar el grupo', form);
 
     const payload = {
-      hora_inicio: form.horaInicio,
-      hora_fin: form.horaFin,
-      costo: form.costo,
-      profesor: form.profesor,
+      hora_inicio: form.horaInicio || undefined,
+      hora_fin: form.horaFin || undefined,
+      costo: Number(form.costo) || undefined,
+      profesor: form.profesor || undefined,
     };
 
     const resBody = await fetch(`${HOST}/api/admin/groups/${groupId}`, {
@@ -70,7 +70,7 @@ export default function EditarGrupo() {
       body: JSON.stringify(payload)
     }).then(res => res.json());
 
-    console.log('resBody', resBody);
+    console.log('Resultado de la actualización del grupo', resBody);
 
     if (resBody.code !== "OK") {
       console.error('Error en la solicitud: ', resBody);

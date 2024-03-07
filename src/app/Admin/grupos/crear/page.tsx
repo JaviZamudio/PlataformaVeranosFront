@@ -1,15 +1,34 @@
 "use client"
 
+import { HOST } from "@/configs";
+import { AuthContext } from "@/contexts/AuthContext";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+
+interface GroupData {
+  grupo_id: string;
+  clave_materia: number;
+  nombre_materia: string;
+  area: string;
+  area_img: string;
+  inscritos: number;
+  carreras: string[];
+  horario?: string;
+  profesor?: string;
+  costo?: number;
+}
 
 interface Materia {
   clave: string;
   nombre: string;
+  carreras: string[];
+  grupo?: GroupData;
 }
-
 export default function CrearGrupo() {
+  const { token } = useContext(AuthContext);
+  const router = useRouter();
+  const claveMateria = useSearchParams().get('materia') || "";
   const [materias, setMaterias] = useState<Materia[]>([]);
   const [form, setForm] = useState({
     materia: "",
@@ -20,20 +39,61 @@ export default function CrearGrupo() {
   });
 
   const getMaterias = async () => {
-    setMaterias([
-      { clave: "1234", nombre: "Materia 1" },
-      { clave: "5678", nombre: "Materia 2" },
-    ])
+    const resBody = await fetch(`${HOST}/api/admin/materias`, {
+      method: 'GET',
+      headers: {
+        'Authorization': token || ''
+      }
+    }).then(res => res.json());
+
+    console.log('Materias Encontradas', resBody);
+
+    if (resBody.code !== "OK") {
+      console.error('Error en la solicitud: ', resBody);
+      return;
+    }
+
+    setMaterias((resBody.data as Materia[]).filter(materia => materia.grupo === undefined));
+
+    if (claveMateria) {
+      setForm({ ...form, materia: claveMateria });
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('form', form);
+
+    const reqBody = {
+      claveMateria: Number(form.materia),
+      costo: Number(form.costo) || undefined,
+      profesor: form.profesor || undefined,
+      hora_inicio: form.horaInicio || undefined,
+      hora_fin: form.horaFin || undefined,
+    }
+
+    const resBody = await fetch(`${HOST}/api/admin/groups`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token || ''
+      },
+      body: JSON.stringify(reqBody)
+    }).then(res => res.json());
+
+    console.log('Resultado de la creación del grupo', resBody);
+
+    if (resBody.code !== "OK") {
+      console.error('Error en la solicitud: ', resBody);
+      return;
+    }
+
+    alert('Grupo creado exitosamente');
+    router.push('/admin');
   }
 
   useEffect(() => {
-    getMaterias();
-  }, []);
+    token && getMaterias();
+  }, [token]);
 
   return (
     <main className="p-4 flex flex-col">
@@ -45,9 +105,9 @@ export default function CrearGrupo() {
         <Select
           label="Materia"
           placeholder="Selecciona una materia"
-          value={form.materia}
-          onChange={e => setForm({ ...form, materia: e.target.value })}
           isRequired
+          selectedKeys={form.materia ? [form.materia] : []}
+          onChange={e => setForm({ ...form, materia: e.target.value })}
         >
           {materias.map(materia => (
             <SelectItem key={materia.clave} value={materia.clave}>{materia.nombre}</SelectItem>

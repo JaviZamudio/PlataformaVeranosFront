@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import { HOST } from '@/configs';
 import { Button, Input, Link, Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 import Image from 'next/image';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
@@ -28,7 +28,7 @@ export default function SolicitudPage() {
     // return console.log(form, captura)
 
     if (!captura) {
-      alert('Debes subir una captura')
+      return alert('Debes subir una captura')
     }
 
     const formData = new FormData()
@@ -70,9 +70,8 @@ export default function SolicitudPage() {
           <Input label="Apellido paterno" placeholder="Escribe tu apellido paterno" value={form.ap_paterno} onValueChange={(value) => setForm({ ...form, ap_paterno: value })} isRequired />
           <Input label="Apellido materno" placeholder="Escribe tu apellido materno" value={form.ap_materno} onValueChange={(value) => setForm({ ...form, ap_materno: value })} isRequired />
           <Input label="Correo" placeholder="Escribe tu correo" value={form.email_alumno} onValueChange={(value) => setForm({ ...form, email_alumno: value })} isRequired />
-          <Input label="Clave de materia" placeholder="Escribe la clave de la materia" value={form.clave_materia} onValueChange={(value) => setForm({ ...form, clave_materia: value })} isRequired />
+          <Input label="Clave de materia" placeholder="Escribe la clave de la materia" value={form.clave_materia} onValueChange={(value) => setForm({ ...form, clave_materia: value })} isRequired isDisabled={!!materia} />
 
-          {/* TODO: Implement some kind of "required" for the screenshot */}
           {/* Screen Shot */}
           <div className='col-span-2'>
             <h2 className='text-xl font-bold text-azul-marino  flex items-end gap-2'>
