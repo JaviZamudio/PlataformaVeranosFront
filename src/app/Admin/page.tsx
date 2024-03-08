@@ -69,7 +69,7 @@ export default function InicioAdmin() {
 
   const filteredMaterias = useMemo(() => {
     return materias.filter(materia => {
-      if (filtros.carrera && materia.carreras.indexOf(filtros.carrera) === -1) return false;
+      if (filtros.carrera && !materia.carreras.includes(filtros.carrera)) return false;
       if (filtros.area_id && materia.area_id !== Number(filtros.area_id)) return false;
       if (filtros.claveMateria && materia.clave.indexOf(filtros.claveMateria) === -1) return false;
 

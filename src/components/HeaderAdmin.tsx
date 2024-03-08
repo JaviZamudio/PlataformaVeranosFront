@@ -24,7 +24,7 @@ export default function AdminHeader() {
             as={Link}
             className='rounded-none text-white gap-1'
             startContent={
-              <span className="material-symbols-outlined">home</span>
+              <span className="material-symbols-outlined !text-xl">home</span>
             }
           >
             Inicio
@@ -43,7 +43,7 @@ export default function AdminHeader() {
           >
             Crear Grupo
           </Button>
-          {/* <Divider orientation='vertical' className='h-6 bg-content3' />
+          <Divider orientation='vertical' className='h-6 bg-content3' />
           <Button
             variant="light"
             color="danger"
@@ -51,11 +51,11 @@ export default function AdminHeader() {
             onPress={logout}
             className='rounded-none text-white gap-1'
             startContent={
-              <span className="material-symbols-outlined">logout</span>
+              <span className="material-symbols-outlined !text-xl">logout</span>
             }
           >
             Cerrar Sesión
-          </Button> */}
+          </Button>
         </nav>
       }
     </header>

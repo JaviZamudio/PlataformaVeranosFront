@@ -5,6 +5,8 @@ import Header from '@/components/Header';
 import NewFiltros from '@/components/NewFiltros';
 import NewTarjeta from '@/components/NewTarjeta';
 import { HOST } from '@/configs';
+import { Card, CardBody } from '@nextui-org/react';
+import Link from 'next/link';
 
 interface Grupo {
   clave_materia: number;
@@ -56,15 +58,22 @@ export default function Inicio() {
 
         <section className='grid grid-cols-3 xl:grid-cols-4 max-w-7xl mt-4 gap-6 '>
           {grupos.map((grupo, index) => {
-            console.log('Filtros Area_id: ', filtros.area_id);
-            console.log('Grupo Area_id: ', grupo.area_id);
-            if (filtros.carrera && grupo.carreras.indexOf(filtros.carrera) === -1) return null;
+            if (filtros.carrera && !grupo.carreras.includes(filtros.carrera)) return null;
             if (filtros.area_id && grupo.area_id !== Number(filtros.area_id)) return null;
-            if (filtros.claveMateria && grupo.clave_materia !== filtros.claveMateria) return null;
+            if (filtros.claveMateria && grupo.clave_materia.toString().indexOf(filtros.claveMateria) === -1) return null;
 
 
             return <NewTarjeta key={index} group={grupo} />
           })}
+
+          {grupos.length > 0 &&
+            <Card className='border-dashed border border-black opacity-70' isPressable as={Link} href='/solicitud'>
+              <CardBody className=' flex flex-col items-center justify-center'>
+                <span className='material-symbols-outlined !text-6xl'>add</span>
+                <span className='text-2xl'>Solicitar otra materia</span>
+              </CardBody>
+            </Card>
+          }
         </section>
       </main>
     </>
