@@ -5,6 +5,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Plataforma Veranos UAQ',
   description: 'Plataforma para la gestión de materias de verano en la UAQ',
+  icons: "/icons/beach3.svg",
 }
 
 export const dynamic = 'force-dynamic'
