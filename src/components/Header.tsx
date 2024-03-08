@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="flex flex-col w-full">
       <div className='relative w-full h-24'>
-        <Image src="/images/fondoHeader.png" alt="hero fondo" fill={true} className='w-full h-24 object-cover object-top' />
+        <Image src="/images/fondoHeader.png" alt="hero fondo" fill={true} className='w-full h-24 object-cover object-top' priority />
         <Image src="/images/logoHeader.png" alt="hero" className='h-24 w-auto absolute' width={700} height={70} />
       </div>
       <nav className='w-full h-10 bg-azul-marino flex justify-end px-4'>

@@ -3,11 +3,6 @@ import Image from "next/image";
 
 const careersList = [
   {
-    name: "Todos",
-    value: "todo",
-    img: ""
-  },
-  {
     name: "Licenciatura en Informática",
     value: "info",
     img: "/images/info.png"
@@ -21,14 +16,14 @@ const careersList = [
 
   {
     name: "Ingeniería de Software",
-    value: "soft",
+    value: "SOF",
     img: "/images/soft.png"
   },
 
 
   {
     name: "Ingeniería en Computación",
-    value: "comp",
+    value: "COM",
     img: "/images/compu.png"
   },
 
@@ -53,70 +48,73 @@ const careersList = [
 
 const areaList = [
   {
-    name: "Todos",
-    value: "todo"
-  },
-  {
     name: "Entorno Social",
-    value: "ensoc"
+    value: 1
   },
 
   {
     name: "Matemáticas",
-    value: "mate"
+    value: 3
   },
 
   {
     name: "Arquitectura de las computadoras",
-    value: "arqui"
+    value: 5
   },
 
   {
     name: "Tratamiento de la información",
-    value: "tinfo"
+    value: 7
   },
 
   {
     name: "Redes",
-    value: "redes"
+    value: 9
   },
 
   {
     name: "Interacción Hombre Máquina",
-    value: "Homaq"
+    value: 11
   },
 
   {
     name: "Software de base",
-    value: "softb"
+    value: 2
   },
 
   {
     name: "Programación e Ingeniería de Software",
-    value: "progs"
+    value: 4
   },
 
   {
     name: "Formación Universitaria",
-    value: "funiv"
+    value: 6
   },
 
   {
     name: "Inglés",
-    value: "ingles"
+    value: 8
   },
 
   {
     name: "Tópico",
-    value: "topic"
+    value: 10
   }
 ]
 
-export default function NewFiltros() {
-  // TODO: Add functionality to the filters
+export default function NewFiltros({ setFiltros, filtros }: { setFiltros: Function, filtros: { carrera: string | null, area_id: string | null, claveMateria: string | null } }) {
   return (
     <div className="flex items-center my-4 w-full max-w-6xl gap-8">
-      <Select placeholder="Selecciona una carrera" label="Carreras" className="max-w-xs">
+      <Select
+        placeholder="Selecciona una carrera"
+        label="Carreras"
+        className="max-w-xs"
+        selectedKeys={filtros.carrera ? [filtros.carrera] : []}
+        onChange={(e) => setFiltros({ ...filtros, carrera: e.target.value })}
+      // onSelectionChange={(keys) => console.log((keys as Set<string>).values().next().value)}
+      // onChange={(e) => console.log(e.target.value)}
+      >
         {careersList.map((item) => (
           <SelectItem key={item.value} value={item.value} startContent={item.img && <Image src={item.img} alt={item.name} width={30} height={30} />} >
             {item.name}
@@ -124,7 +122,13 @@ export default function NewFiltros() {
         ))}
       </Select>
 
-      <Select placeholder="Selecciona un área" label="Área" className="max-w-xs">
+      <Select
+        placeholder="Selecciona un área"
+        label="Área"
+        className="max-w-xs"
+        selectedKeys={filtros.area_id ? [filtros.area_id] : []}
+        onChange={(e) => setFiltros({ ...filtros, area_id: e.target.value })}
+      >
         {areaList.map((item) => (
           <SelectItem key={item.value} value={item.value}>
             {item.name}
@@ -133,7 +137,18 @@ export default function NewFiltros() {
       </Select>
 
       {/* Search by id */}
-      <Input placeholder="Buscar por Clave" label="Clave" maxLength={5} className="ml-auto max-w-xs" endContent={<Button isIconOnly size="sm" variant="faded" radius="lg"><span className="material-symbols-outlined !text-xl">search</span></Button>} />
+      <Input
+        placeholder="Buscar por Clave"
+        label="Clave"
+        maxLength={5}
+        className="ml-auto max-w-xs"
+        // endContent={<Button isIconOnly size="sm" variant="faded" radius="lg">
+        //   <span className="material-symbols-outlined !text-xl">search</span>
+        // </Button>}
+        isClearable
+        value={filtros.claveMateria || ""}
+        onValueChange={(value) => setFiltros({ ...filtros, claveMateria: value })}
+      />
     </div>
   )
 }

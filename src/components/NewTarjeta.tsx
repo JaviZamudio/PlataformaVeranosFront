@@ -13,7 +13,7 @@ interface GroupData {
   inscritos: number;
   horario: string;
   profesor: string;
-  costo: number;
+  costo: number | string;
   carreras: string[];
 }
 export default function NewTarjeta({ group }: { group: GroupData }) {
