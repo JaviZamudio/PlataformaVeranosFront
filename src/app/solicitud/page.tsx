@@ -11,13 +11,13 @@ import React from 'react';
 export default function SolicitudPage() {
   const materia = useSearchParams().get("materia")
   const router = useRouter()
-  // 'expediente_alumno', 'nombre_alumno', 'ap_paterno', 'ap_materno', 'email_alumno', 'clave_materia'
   const [form, setForm] = React.useState({
     expediente_alumno: '',
     nombre_alumno: '',
     ap_paterno: '',
     ap_materno: '',
     email_alumno: '',
+    telefono_alumno: '',
     clave_materia: materia || '',
   })
   const [captura, setCaptura] = React.useState<File | null>(null)
@@ -38,6 +38,7 @@ export default function SolicitudPage() {
     formData.append('ap_paterno', form.ap_paterno)
     formData.append('ap_materno', form.ap_materno)
     formData.append('email_alumno', form.email_alumno)
+    formData.append('telefono_alumno', form.telefono_alumno)
     formData.append('clave_materia', form.clave_materia)
     formData.append('captura', captura!)
 
@@ -70,6 +71,7 @@ export default function SolicitudPage() {
           <Input label="Apellido paterno" placeholder="Escribe tu apellido paterno" value={form.ap_paterno} onValueChange={(value) => setForm({ ...form, ap_paterno: value })} isRequired />
           <Input label="Apellido materno" placeholder="Escribe tu apellido materno" value={form.ap_materno} onValueChange={(value) => setForm({ ...form, ap_materno: value })} isRequired />
           <Input label="Correo" placeholder="Escribe tu correo" value={form.email_alumno} onValueChange={(value) => setForm({ ...form, email_alumno: value })} isRequired />
+          <Input label="Telefono" placeholder="Escribe tu telefono" value={form.telefono_alumno} onValueChange={(value) => setForm({ ...form, telefono_alumno: value })} isRequired />
           <Input label="Clave de materia" placeholder="Escribe la clave de la materia" value={form.clave_materia} onValueChange={(value) => setForm({ ...form, clave_materia: value })} isRequired isDisabled={!!materia} />
 
           {/* Screen Shot */}
