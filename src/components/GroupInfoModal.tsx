@@ -1,10 +1,13 @@
 "use client"
 
+import { HOST } from "@/configs";
+import { AuthContext } from "@/contexts/AuthContext";
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@nextui-org/react";
 import Image from "next/image";
+import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ReactElement, cloneElement, useState } from "react";
+import { ReactElement, cloneElement, useContext, useState } from "react";
 
 interface GroupData {
   grupo_id: string;
@@ -19,9 +22,36 @@ interface GroupData {
   carreras: string[];
 }
 
+interface Request {
+  nombre_alumno: string,
+  ap_paterno: string,
+  expediente_alumno: string,
+  email_alumno: string,
+  telefono_alumno: string,
+}
+
 export default function GroupInfoModal({ group, children }: { group: GroupData, children: ReactElement }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const router = useRouter();
+  const [requests, setRequests] = useState<Request[] | null>(null);
+  const { token } = useContext(AuthContext);
+
+  const getRequests = async () => {
+    const resBody = await fetch(`${HOST}/api/admin/grupos/${group.grupo_id}/solicitudes`, {
+      method: 'GET',
+      headers: {
+        'Authorization': token || ''
+      }
+    }).then(res => res.json());
+
+    console.log('Resultado de solicitudes', resBody);
+
+    if (resBody.code !== "OK") {
+      console.error('Error en la solicitud: ', resBody);
+      return;
+    }
+
+    setRequests(resBody.data);
+  }
 
   return (
     <>
@@ -29,7 +59,8 @@ export default function GroupInfoModal({ group, children }: { group: GroupData, 
       <Modal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        size="lg"
+        size="xl"
+        scrollBehavior="outside"
       >
         <ModalContent>
           <Image
@@ -71,6 +102,45 @@ export default function GroupInfoModal({ group, children }: { group: GroupData, 
                 <p className="text-base ml-2">{`${group.inscritos}/20 para abrir el grupo`}</p>
               </div>
             </div>
+
+            <Divider className="mt-2" />
+
+            {/* Show Requests */}
+            {!requests && (
+              <Button
+                color="primary"
+                variant="flat"
+                onPress={getRequests}
+                startContent={<span className="material-symbols-outlined">info</span>}
+              >
+                Ver Solicitudes
+              </Button>
+            )}
+
+            {requests && requests.length === 0 && (
+              <span className="text-center text-gray-500 block mt-2">No hay solicitudes</span>
+            )}
+
+            {requests && requests.length > 0 && (
+              <Table className="w-full max-h-96 overflow-y-auto mt-2" isStriped removeWrapper>
+                <TableHeader>
+                  <TableColumn>Nombre</TableColumn>
+                  <TableColumn>Expediente</TableColumn>
+                  <TableColumn>Email</TableColumn>
+                  <TableColumn>Telefono</TableColumn>
+                </TableHeader>
+                <TableBody>
+                  {requests.map(request => (
+                    <TableRow key={request.expediente_alumno}>
+                      <TableCell>{`${request.nombre_alumno}`}</TableCell>
+                      <TableCell>{request.expediente_alumno}</TableCell>
+                      <TableCell>{request.email_alumno}</TableCell>
+                      <TableCell>{request.telefono_alumno || "-"}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            )}
           </ModalBody>
           <ModalFooter>
             <Button
