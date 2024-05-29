@@ -43,11 +43,11 @@ export default function NewTarjeta({ group }: { group: GroupData }) {
                 <p className="text-base font-semibold">Area:</p>
                 <p className="text-base ml-2">{group.area}</p>
               </div>
-              <div className="flex items-center">
+              <div className="flex flex-col">
                 <p className="text-base font-semibold">Carreras:</p>
                 <p className="text-base ml-2">{group.carreras.join(", ")}</p>
               </div>
-              <div className="flex items-center">
+              <div className="flex flex-col">
                 <p className="text-base font-semibold">Profesor:</p>
                 <p className="text-base ml-2">{group.profesor}</p>
               </div>
@@ -107,7 +107,7 @@ export default function NewTarjeta({ group }: { group: GroupData }) {
             <p className="text-base ml-2">{group.area}</p>
           </div>
 
-          <div className="flex items-center">
+          <div className="flex flex-col">
             <p className="text-base font-semibold">Carreras:</p>
             <p className="text-base ml-2">{group.carreras.join(", ")}</p>
           </div>

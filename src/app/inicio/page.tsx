@@ -56,7 +56,7 @@ export default function Inicio() {
       <main className='flex flex-col w-full items-center p-4'>
         <NewFiltros setFiltros={setFiltros} filtros={filtros} />
 
-        <section className='grid grid-cols-3 xl:grid-cols-4 max-w-7xl mt-4 gap-6 '>
+        <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 max-w-7xl mt-4 gap-6 '>
           {grupos.map((grupo, index) => {
             if (filtros.carrera && !grupo.carreras.includes(filtros.carrera)) return null;
             if (filtros.area_id && grupo.area_id !== Number(filtros.area_id)) return null;
